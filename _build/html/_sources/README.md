@@ -1,28 +1,22 @@
 # Process-Based Modeling in Ocean and Climate Science
 
-**Daniela Osorio Rodriguez, PhD**  
-Postdoctoral Research Fellow, University of Southern California  
-[danieosro@gmail.com](mailto:danieosro@gmail.com)
-
----
-
 ## Interactive Book
 
 **[View the interactive Jupyter Book](https://daniosro.github.io/Modeling_portfolio/)**
 
-The book includes fully interactive Plotly figures — hover for exact values, zoom, and toggle series — for all Python notebooks.
+The book includes fully interactive Plotly figures (hover for exact values, zoom, and toggle series) for all Python notebooks.
 
 ---
 
 ## Models
 
-### 1. AWL Ship Reactor — Dong et al. (2025)
+### 1. Accelerated Weathering of Limestone Ship Reactor — Dong et al. (2025)
 
 **[View notebook](https://daniosro.github.io/Modeling_portfolio/notebooks/awl_reactor_model.html)**
 
-A box model of the Accelerated Weathering of Limestone (AWL) reactor (Dong et al., *Science Advances*, 2025, eadr7250). The reactor dissolves limestone in CO₂-rich ship flue gas and seawater, converting CO₂ to stable bicarbonate ions — permanent ocean carbon sequestration without pipelines or injection wells.
+A box model of the Accelerated Weathering of Limestone (AWL) reactor (Dong et al., *Science Advances*, 2025). The reactor dissolves limestone in CO₂-rich ship flue gas and seawater, converting CO₂ to stable bicarbonate ions, evaluating the potential for permanent ocean carbon sequestration without pipelines or injection wells.
 
-**Implements:** Eqs. 4-11 from the paper — two-segment calcite dissolution kinetics, Henry's law CO₂ saturation, and mass balance ODEs for a 4-unit packed column stirred tank reactor in parallel and counterflow configurations.
+**Implements:** Eqs. 4-11 from the paper (two-segment calcite dissolution kinetics, Henry's law CO₂ saturation, and mass balance ODEs for a 4-unit packed column stirred tank reactor in parallel and counterflow configurations).
 
 **Language:** Python (NumPy, SciPy, Matplotlib, Plotly)
 
@@ -44,7 +38,7 @@ A coupled model of biological wastewater treatment (Activated Sludge Model No. 1
 
 **[View notebook](https://daniosro.github.io/Modeling_portfolio/notebooks/trichodesmium_temperature_limitedPO4.html)**
 
-A proteome-allocation optimization model for colonial *Trichodesmium* — a nitrogen-fixing marine cyanobacterium central to ocean biogeochemical cycling. Predicts how cells optimally allocate protein investment across all metabolic functions to maximize growth rate under a range of temperatures, with phosphorus supplied by the colonial microbiome as dissolved organic phosphorus (DOP).
+A proteome-allocation optimization model for colonial *Trichodesmium*, one of the main nitrogen-fixing marine cyanobacterium. Predicts how cells optimally allocate protein investment across all metabolic functions to maximize growth rate under a range of temperatures, with phosphorus supplied by the colonial microbiome as dissolved organic phosphorus (DOP).
 
 From Osorio-Rodriguez et al. (in review) — "Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria."
 

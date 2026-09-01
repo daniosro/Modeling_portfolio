@@ -1,9 +1,4 @@
 # Process-Based Modeling in Ocean and Climate Science
-
-**Daniela Osorio Rodriguez, PhD**  
-Postdoctoral Research Fellow, University of Southern California  
-[danieosro@gmail.com](mailto:danieosro@gmail.com) | [github.com/daniosro](https://github.com/daniosro)
-
 ---
 
 ## About this book
@@ -16,11 +11,11 @@ All models are implemented in open, reproducible formats with documented code, d
 
 ## Models
 
-### 1. AWL Ship Reactor — Dong et al. (2025)
+### 1. Accelerated Weathering of Limestone (AWL) Ship Reactor — Dong et al. (2025)
 
-A box model of the **Accelerated Weathering of Limestone (AWL)** reactor developed by Dong et al. (*Science Advances*, 2025, eadr7250). The reactor dissolves limestone in CO2-rich seawater aboard cargo ships, converting flue gas CO2 to stable bicarbonate ions dissolved in the ocean — permanent carbon sequestration without pipelines or injection wells.
+A box model of the **Accelerated Weathering of Limestone (AWL)** reactor developed by Dong et al. (*Science Advances*, 2025). The reactor dissolves limestone in CO2-rich seawater aboard cargo ships, converting flue gas CO2 to stable bicarbonate ions dissolved in the ocean. The model assesses the feasibility of the process for permanent carbon sequestration without pipelines or injection wells.
 
-**Implements:** Eqs. 4-11 from the paper — calcite dissolution kinetics, Henry's law CO2 saturation, and mass balance ODEs for a 4-unit packed column stirred tank reactor in parallel and counterflow configurations.
+**Implements:** Eqs. 4-11 from the paper (calcite dissolution kinetics, Henry's law CO2 saturation, and mass balance ODEs for a 4-unit packed column stirred tank reactor in parallel and counterflow configurations).
 
 **Language:** Python (NumPy, SciPy, Matplotlib)
 
@@ -28,7 +23,7 @@ A box model of the **Accelerated Weathering of Limestone (AWL)** reactor develop
 
 ### 2. Coupled Wastewater Treatment and Carbon Mineralization — CREW
 
-A coupled model of biological wastewater treatment (Activated Sludge Model No. 1, Henze et al. 1987) and inorganic carbon mineralization, inspired by [CREW's](https://www.crewcarbon.com) process intensification technology. CREW makes wastewater treatment cheaper and carbon-negative by reacting biogenic CO2 with alkaline minerals, permanently sequestering it as dissolved bicarbonate.
+A coupled model of biological wastewater treatment (Activated Sludge Model No. 1, Henze et al. 1987) and inorganic carbon mineralization, inspired by [CREW's](https://www.crewcarbon.com) process intensification technology. CREW treats wastewater by reacting biogenic CO2 with alkaline minerals for permanent carbon sequestration as dissolved bicarbonate.
 
 **Implements:** ASM1 mass balance ODEs for COD, nitrogen, oxygen, and biomass dynamics coupled to a first-order CO2 mineralization rate law. Demonstrates the synergistic coupling between biological CO2 production and mineral dissolution.
 
@@ -36,11 +31,11 @@ A coupled model of biological wastewater treatment (Activated Sludge Model No. 1
 
 ---
 
-### 3. Colonial *Trichodesmium* Optimization Model
+### 3. Single-cell proteome allocation model for Colonial *Trichodesmium* 
 
-A proteome-allocation optimization model for colonial *Trichodesmium* — a nitrogen-fixing, filamentous marine cyanobacterium critical to ocean biogeochemical cycling. The model predicts how the cell optimally allocates its protein investment across all metabolic functions to maximize growth rate under a range of temperatures, with phosphorus supplied by the colonial microbiome as dissolved organic phosphorus (DOP).
+This notebook implements the proteome-allocation optimization model for colonial Trichodesmium described in Osorio-Rodriguez et al. (2026, in prep.). The model predicts how a colonial Trichodesmium cell optimally allocates its proteome (the total protein investment across all metabolic functions) to maximize growth rate under a range of temperatures, with phosphorus supplied exclusively as inorganic phosphate (PO₄) and phycosphere-related phosphorus (PRP, here called DOP).
 
-**Scientific context:** From Osorio-Rodriguez et al. (2026, *ISME Journal*) — "Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N2-fixing cyanobacteria." The model examines how the *Trichodesmium* microbiome impacts growth under oligotrophic conditions and how thermal optima and cell morphology determine biogeographic distributions.
+**Scientific context:** From Osorio-Rodriguez et al. (2026, *in prep.*) — "Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N2-fixing cyanobacteria." The model examines how the *Trichodesmium* microbiome impacts growth under oligotrophic conditions and how thermal optima and cell morphology determine biogeographic distributions.
 
 **Implements:** Nonlinear programming (NLP) optimization via JuMP/Ipopt in Julia. Maximizes log growth rate subject to mass balance, energetic, stoichiometric, membrane, and density constraints across a 18-35°C temperature sweep.
 
@@ -52,7 +47,7 @@ A proteome-allocation optimization model for colonial *Trichodesmium* — a nitr
 
 All three models share the same fundamental approach: **process-based modeling with empirical kinetic rate laws**.
 
-Each model encodes known mechanisms — enzyme kinetics, dissolution rate laws, mass balance constraints — as mathematical equations, then solves those equations to predict system behavior. This approach is more interpretable than black-box machine learning models: every parameter has a physical meaning, every equation represents a known process, and the model's predictions can be traced back to specific assumptions.
+Each model encodes known mechanisms, such as enzyme kinetics, dissolution rate laws, and mass balance constraints as mathematical equations, then solves those equations to predict system behavior. This approach is more interpretable than black-box machine learning models: every parameter has a physical meaning, every equation represents a known process, and the model's predictions can be traced back to specific assumptions.
 
 The key modeling elements shared across all three notebooks:
 

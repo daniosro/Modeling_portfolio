@@ -60,13 +60,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="AWL Ship Reactor Box Model" href="notebooks/awl_reactor_model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -189,7 +186,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -210,8 +207,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Process-Based Modeling in Ocean and Climate Science
                 </a>
             </li>
@@ -279,7 +276,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/README.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -365,15 +362,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-book">About this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-book">Interactive Book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerated-weathering-of-limestone-awl-ship-reactor-dong-et-al-2025">1. Accelerated Weathering of Limestone (AWL) Ship Reactor — Dong et al. (2025)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-wastewater-treatment-and-carbon-mineralization-crew">2. Coupled Wastewater Treatment and Carbon Mineralization — CREW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell-proteome-allocation-model-for-colonial-trichodesmium">3. Single-cell proteome allocation model for Colonial <em>Trichodesmium</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#awl-ship-reactor-dong-et-al-2025">1. AWL Ship Reactor — Dong et al. (2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-wastewater-treatment-and-carbon-mineralization">2. Coupled Wastewater Treatment and Carbon Mineralization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colonial-trichodesmium-optimization-model">3. Colonial <em>Trichodesmium</em> Optimization Model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-framework">Mathematical framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-locally">Running locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -387,46 +385,50 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="process-based-modeling-in-ocean-and-climate-science">
 <h1>Process-Based Modeling in Ocean and Climate Science<a class="headerlink" href="#process-based-modeling-in-ocean-and-climate-science" title="Link to this heading">#</a></h1>
+<p><strong>Daniela Osorio Rodriguez, PhD</strong><br />
+Postdoctoral Research Fellow, University of Southern California<br />
+<a class="reference external" href="mailto:danieosro&#37;&#52;&#48;gmail&#46;com">danieosro<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
 <hr class="docutils" />
-<section id="about-this-book">
-<h2>About this book<a class="headerlink" href="#about-this-book" title="Link to this heading">#</a></h2>
-<p>This Jupyter Book documents three process-based computational models at the intersection of ocean science, climate, and biotechnology. Each model encodes known physical, chemical, or biological mechanisms as differential equations or optimization constraints, and uses those equations to predict system behavior under conditions that have not been directly measured.</p>
-<p>All models are implemented in open, reproducible formats with documented code, described parameters, and executable outputs.</p>
+<section id="interactive-book">
+<h2>Interactive Book<a class="headerlink" href="#interactive-book" title="Link to this heading">#</a></h2>
+<p><strong><a class="reference external" href="https://daniosro.github.io/Modeling_portfolio/">View the interactive Jupyter Book</a></strong></p>
+<p>The book includes fully interactive Plotly figures — hover for exact values, zoom, and toggle series — for all Python notebooks.</p>
 </section>
 <hr class="docutils" />
 <section id="models">
 <h2>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h2>
-<section id="accelerated-weathering-of-limestone-awl-ship-reactor-dong-et-al-2025">
-<h3>1. Accelerated Weathering of Limestone (AWL) Ship Reactor — Dong et al. (2025)<a class="headerlink" href="#accelerated-weathering-of-limestone-awl-ship-reactor-dong-et-al-2025" title="Link to this heading">#</a></h3>
-<p>A box model of the <strong>Accelerated Weathering of Limestone (AWL)</strong> reactor developed by Dong et al. (<em>Science Advances</em>, 2025). The reactor dissolves limestone in CO2-rich seawater aboard cargo ships, converting flue gas CO2 to stable bicarbonate ions dissolved in the ocean. The model assesses the feasibility of the process for permanent carbon sequestration without pipelines or injection wells.</p>
-<p><strong>Implements:</strong> Eqs. 4-11 from the paper (calcite dissolution kinetics, Henry’s law CO2 saturation, and mass balance ODEs for a 4-unit packed column stirred tank reactor in parallel and counterflow configurations).</p>
-<p><strong>Language:</strong> Python (NumPy, SciPy, Matplotlib)</p>
-</section>
-<hr class="docutils" />
-<section id="coupled-wastewater-treatment-and-carbon-mineralization-crew">
-<h3>2. Coupled Wastewater Treatment and Carbon Mineralization — CREW<a class="headerlink" href="#coupled-wastewater-treatment-and-carbon-mineralization-crew" title="Link to this heading">#</a></h3>
-<p>A coupled model of biological wastewater treatment (Activated Sludge Model No. 1, Henze et al. 1987) and inorganic carbon mineralization, inspired by <a class="reference external" href="https://www.crewcarbon.com">CREW’s</a> process intensification technology. CREW treats wastewater by reacting biogenic CO2 with alkaline minerals for permanent carbon sequestration as dissolved bicarbonate.</p>
-<p><strong>Implements:</strong> ASM1 mass balance ODEs for COD, nitrogen, oxygen, and biomass dynamics coupled to a first-order CO2 mineralization rate law. Demonstrates the synergistic coupling between biological CO2 production and mineral dissolution.</p>
+<section id="awl-ship-reactor-dong-et-al-2025">
+<h3>1. AWL Ship Reactor — Dong et al. (2025)<a class="headerlink" href="#awl-ship-reactor-dong-et-al-2025" title="Link to this heading">#</a></h3>
+<p><strong><a class="reference external" href="https://daniosro.github.io/Modeling_portfolio/notebooks/awl_reactor_model.html">View notebook</a></strong></p>
+<p>A box model of the Accelerated Weathering of Limestone (AWL) reactor (Dong et al., <em>Science Advances</em>, 2025, eadr7250). The reactor dissolves limestone in CO₂-rich ship flue gas and seawater, converting CO₂ to stable bicarbonate ions — permanent ocean carbon sequestration without pipelines or injection wells.</p>
+<p><strong>Implements:</strong> Eqs. 4-11 from the paper — two-segment calcite dissolution kinetics, Henry’s law CO₂ saturation, and mass balance ODEs for a 4-unit packed column stirred tank reactor in parallel and counterflow configurations.</p>
 <p><strong>Language:</strong> Python (NumPy, SciPy, Matplotlib, Plotly)</p>
 </section>
 <hr class="docutils" />
-<section id="single-cell-proteome-allocation-model-for-colonial-trichodesmium">
-<h3>3. Single-cell proteome allocation model for Colonial <em>Trichodesmium</em><a class="headerlink" href="#single-cell-proteome-allocation-model-for-colonial-trichodesmium" title="Link to this heading">#</a></h3>
-<p>This notebook implements the proteome-allocation optimization model for colonial Trichodesmium described in Osorio-Rodriguez et al. (2026, in prep.). The model predicts how a colonial Trichodesmium cell optimally allocates its proteome (the total protein investment across all metabolic functions) to maximize growth rate under a range of temperatures, with phosphorus supplied exclusively as inorganic phosphate (PO₄) and phycosphere-related phosphorus (PRP, here called DOP).</p>
-<p><strong>Scientific context:</strong> From Osorio-Rodriguez et al. (2026, <em>in prep.</em>) — “Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N2-fixing cyanobacteria.” The model examines how the <em>Trichodesmium</em> microbiome impacts growth under oligotrophic conditions and how thermal optima and cell morphology determine biogeographic distributions.</p>
-<p><strong>Implements:</strong> Nonlinear programming (NLP) optimization via JuMP/Ipopt in Julia. Maximizes log growth rate subject to mass balance, energetic, stoichiometric, membrane, and density constraints across a 18-35°C temperature sweep.</p>
+<section id="coupled-wastewater-treatment-and-carbon-mineralization">
+<h3>2. Coupled Wastewater Treatment and Carbon Mineralization<a class="headerlink" href="#coupled-wastewater-treatment-and-carbon-mineralization" title="Link to this heading">#</a></h3>
+<p><strong><a class="reference external" href="https://daniosro.github.io/Modeling_portfolio/notebooks/crew_process_model.html">View notebook</a></strong></p>
+<p>A coupled model of biological wastewater treatment (Activated Sludge Model No. 1, Henze et al. 1987) and inorganic carbon mineralization, inspired by <a class="reference external" href="https://www.crewcarbon.com">CREW’s</a> process intensification technology. Demonstrates the synergistic coupling between biological CO₂ production and mineral dissolution for permanent carbon sequestration.</p>
+<p><strong>Implements:</strong> ASM1 mass balance ODEs for COD, nitrogen, oxygen, and biomass dynamics coupled to a first-order CO₂ mineralization rate law.</p>
+<p><strong>Language:</strong> Python (NumPy, SciPy, Matplotlib, Plotly)</p>
+</section>
+<hr class="docutils" />
+<section id="colonial-trichodesmium-optimization-model">
+<h3>3. Colonial <em>Trichodesmium</em> Optimization Model<a class="headerlink" href="#colonial-trichodesmium-optimization-model" title="Link to this heading">#</a></h3>
+<p><strong><a class="reference external" href="https://daniosro.github.io/Modeling_portfolio/notebooks/trichodesmium_temperature_limitedPO4.html">View notebook</a></strong></p>
+<p>A proteome-allocation optimization model for colonial <em>Trichodesmium</em> — a nitrogen-fixing marine cyanobacterium central to ocean biogeochemical cycling. Predicts how cells optimally allocate protein investment across all metabolic functions to maximize growth rate under a range of temperatures, with phosphorus supplied by the colonial microbiome as dissolved organic phosphorus (DOP).</p>
+<p>From Osorio-Rodriguez et al. (in review) — “Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.”</p>
+<p><strong>Implements:</strong> Nonlinear programming (NLP) optimization via JuMP/Ipopt. Maximizes log growth rate subject to mass balance, energetic, stoichiometric, membrane, and density constraints across an 18–35°C temperature sweep.</p>
 <p><strong>Language:</strong> Julia (JuMP, Ipopt, DataFrames, Plots)</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="mathematical-framework">
 <h2>Mathematical framework<a class="headerlink" href="#mathematical-framework" title="Link to this heading">#</a></h2>
-<p>All three models share the same fundamental approach: <strong>process-based modeling with empirical kinetic rate laws</strong>.</p>
-<p>Each model encodes known mechanisms, such as enzyme kinetics, dissolution rate laws, and mass balance constraints as mathematical equations, then solves those equations to predict system behavior. This approach is more interpretable than black-box machine learning models: every parameter has a physical meaning, every equation represents a known process, and the model’s predictions can be traced back to specific assumptions.</p>
-<p>The key modeling elements shared across all three notebooks:</p>
+<p>All three models share the same core approach: <strong>process-based modeling with empirical kinetic rate laws</strong> — encoding known physical, chemical, or biological mechanisms as differential equations or optimization constraints, then solving them to predict system behavior.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Element</p></th>
+<tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>AWL Reactor</p></th>
 <th class="head"><p>CREW Model</p></th>
 <th class="head"><p><em>Trichodesmium</em></p></th>
@@ -438,24 +440,24 @@
 <td><p>Monod + first-order</p></td>
 <td><p>Michaelis-Menten</p></td>
 </tr>
-<tr class="row-odd"><td><p>Mass balance</p></td>
+<tr class="row-odd"><td><p>Math</p></td>
 <td><p>ODE per reactor unit</p></td>
 <td><p>ODE per state variable</p></td>
-<td><p>Algebraic constraints</p></td>
+<td><p>NLP constraints</p></td>
 </tr>
 <tr class="row-even"><td><p>Solver</p></td>
 <td><p>SciPy LSODA</p></td>
 <td><p>SciPy LSODA</p></td>
-<td><p>JuMP/Ipopt NLP</p></td>
+<td><p>JuMP/Ipopt</p></td>
 </tr>
 <tr class="row-odd"><td><p>Key parameter</p></td>
 <td><p>Solid holdup, grain size</p></td>
 <td><p>HRT, SRT, mineral loading</p></td>
-<td><p>Temperature, nutrient availability</p></td>
+<td><p>Temperature, nutrient supply</p></td>
 </tr>
 <tr class="row-even"><td><p>Output</p></td>
 <td><p>Alkalinity, pH, efficiency</p></td>
-<td><p>COD removal, CO2 sequestration</p></td>
+<td><p>COD removal, CO₂ sequestration</p></td>
 <td><p>Growth rate, proteome allocation</p></td>
 </tr>
 </tbody>
@@ -463,20 +465,26 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="reproducibility">
-<h2>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h2>
-<p>All code is available on <a class="reference external" href="https://github.com/daniosro">GitHub</a>. Each notebook documents:</p>
-<ul class="simple">
-<li><p>What the model does in plain language</p></li>
-<li><p>What each parameter represents and its units</p></li>
-<li><p>What assumptions are made and where they may fail</p></li>
-<li><p>How to run the code and interpret the output</p></li>
-</ul>
-<p>Python notebooks require: <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">plotly</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code><br />
-Julia notebooks require: <code class="docutils literal notranslate"><span class="pre">JuMP</span></code>, <code class="docutils literal notranslate"><span class="pre">Ipopt</span></code>, <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, <code class="docutils literal notranslate"><span class="pre">Plots</span></code>, <code class="docutils literal notranslate"><span class="pre">CSV</span></code></p>
-</section>
-<div class="toctree-wrapper compound">
+<section id="running-locally">
+<h2>Running locally<a class="headerlink" href="#running-locally" title="Link to this heading">#</a></h2>
+<p><strong>Python notebooks (AWL and CREW):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>plotly<span class="w"> </span>pandas<span class="w"> </span>jupyterlab
+jupyter<span class="w"> </span>lab
+</pre></div>
 </div>
+<p><strong>Julia notebook (Trichodesmium):</strong>
+Requires Julia with JuMP, Ipopt, DataFrames, Plots, and CSV packages.</p>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Dong et al. (2025). Accelerated weathering of limestone on cargo ships for ocean carbon dioxide removal. <em>Science Advances</em>, eadr7250.</p></li>
+<li><p>Henze et al. (1987). Activated Sludge Model No. 1. IWA Publishing.</p></li>
+<li><p>Naviaux et al. (2019). Calcite dissolution rates in seawater. <em>Geochimica et Cosmochimica Acta</em>, 246:363–384.</p></li>
+<li><p>Osorio-Rodriguez et al. (in review). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -509,15 +517,6 @@ Julia notebooks require: <code class="docutils literal notranslate"><span class=
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="notebooks/awl_reactor_model.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">AWL Ship Reactor Box Model</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -536,15 +535,16 @@ Julia notebooks require: <code class="docutils literal notranslate"><span class=
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-book">About this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-book">Interactive Book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerated-weathering-of-limestone-awl-ship-reactor-dong-et-al-2025">1. Accelerated Weathering of Limestone (AWL) Ship Reactor — Dong et al. (2025)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-wastewater-treatment-and-carbon-mineralization-crew">2. Coupled Wastewater Treatment and Carbon Mineralization — CREW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell-proteome-allocation-model-for-colonial-trichodesmium">3. Single-cell proteome allocation model for Colonial <em>Trichodesmium</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#awl-ship-reactor-dong-et-al-2025">1. AWL Ship Reactor — Dong et al. (2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-wastewater-treatment-and-carbon-mineralization">2. Coupled Wastewater Treatment and Carbon Mineralization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colonial-trichodesmium-optimization-model">3. Colonial <em>Trichodesmium</em> Optimization Model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-framework">Mathematical framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-locally">Running locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

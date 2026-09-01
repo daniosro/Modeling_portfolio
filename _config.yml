@@ -1,0 +1,17 @@
+title: "Process-Based Modeling in Ocean and Climate Science"
+author: "Daniela Osorio Rodriguez, PhD"
+
+execute:
+  execute_notebooks: "auto"
+  timeout: 600
+  exclude_patterns:
+    - "*/trichodesmium_temperature_limitedPO4.ipynb"
+
+html:
+  use_issues_button: false
+  use_repository_button: false
+  home_page_in_navbar: true
+
+sphinx:
+  config:
+    html_show_sourcelink: false

@@ -1,0 +1,9 @@
+format: jb-book
+root: intro
+chapters:
+  - file: notebooks/awl_reactor_model
+    title: "AWL Ship Reactor (Dong et al. 2025)"
+  - file: notebooks/crew_process_model
+    title: "Wastewater Treatment and Carbon Mineralization (CREW)"
+  - file: notebooks/trichodesmium_temperature_limitedPO4
+    title: "Colonial Trichodesmium Optimization Model"

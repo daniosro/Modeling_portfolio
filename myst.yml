@@ -1,0 +1,18 @@
+version: 1
+project:
+  title: Process-Based Modeling in Ocean and Climate Science
+  authors:
+    - name: Daniela Osorio Rodriguez, PhD
+  github: https://github.com/daniosro
+  toc:
+    - file: intro.md
+    - file: notebooks/awl_reactor_model.ipynb
+      title: AWL Ship Reactor (Dong et al. 2025)
+    - file: notebooks/crew_process_model.ipynb
+      title: Wastewater Treatment and Carbon Mineralization (CREW)
+    - file: notebooks/trichodesmium_temperature_limitedPO4.ipynb
+      title: Colonial Trichodesmium Optimization Model
+site:
+  options:
+    folders: true
+  template: book-theme

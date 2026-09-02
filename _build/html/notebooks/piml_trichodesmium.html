@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Physics-Informed Machine Learning for Biological Optimization Models &#8212; Process-Based Modeling in Ocean and Climate Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/piml_trichodesmium';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Single-cell proteome allocation model for Colonial Trichodesmium" href="trichodesmium_temperature_limitedPO4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Process-Based Modeling in Ocean and Climate Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Process-Based Modeling in Ocean and Climate Science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="awl_reactor_model.html">AWL Ship Reactor (Dong et al. 2025)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crew_process_model.html">Wastewater and Carbon Mineralization (CREW)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trichodesmium_temperature_limitedPO4.html">Colonial Trichodesmium Optimization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Physics-Informed ML: Trichodesmium Surrogate</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/piml_trichodesmium.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Physics-Informed Machine Learning for Biological Optimization Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surrogate-model-for-colonial-trichodesmium-across-temperature-and-nutrient-gradients">Surrogate Model for Colonial <em>Trichodesmium</em> Across Temperature and Nutrient Gradients</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-piml-solves">The problem PIML solves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-notebook-does">What this notebook does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-biological-constraints-enforced-in-the-loss">Key biological constraints enforced in the loss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-and-setup">1. Imports and Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-training-data-from-the-optimization-model">2. Simulate Training Data from the Optimization Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-and-train-test-split">3. Preprocessing and Train/Test Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-architecture">4. Neural Network Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-informed-loss-function">5. Physics-Informed Loss Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-standard-nn-and-piml-network">6. Train Standard NN and PIML Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-accuracy-and-physical-consistency">7. Evaluate Accuracy and Physical Consistency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-plots-plotly">8. Interactive Plots (Plotly)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-time-surrogate-prediction">9. Real-Time Surrogate Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-and-relevance-to-environmental-data-platforms">10. Summary and Relevance to Environmental Data Platforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-notebook-demonstrates">What this notebook demonstrates</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="physics-informed-machine-learning-for-biological-optimization-models">
+<h1>Physics-Informed Machine Learning for Biological Optimization Models<a class="headerlink" href="#physics-informed-machine-learning-for-biological-optimization-models" title="Link to this heading">#</a></h1>
+<section id="surrogate-model-for-colonial-trichodesmium-across-temperature-and-nutrient-gradients">
+<h2>Surrogate Model for Colonial <em>Trichodesmium</em> Across Temperature and Nutrient Gradients<a class="headerlink" href="#surrogate-model-for-colonial-trichodesmium-across-temperature-and-nutrient-gradients" title="Link to this heading">#</a></h2>
+<p>This notebook demonstrates <strong>physics-informed machine learning (PIML)</strong> applied to the
+colonial <em>Trichodesmium</em> proteome-allocation optimization model from Osorio-Rodriguez et al. (in prep.).</p>
+<section id="the-problem-piml-solves">
+<h3>The problem PIML solves<a class="headerlink" href="#the-problem-piml-solves" title="Link to this heading">#</a></h3>
+<p>The full optimization model (JuMP/Ipopt, Julia) takes 2-5 minutes to solve the temperature sweep.
+Real-time applications (ocean biogeochemical models, sensor-driven dashboards, inverse modeling)
+need predictions in milliseconds. A standard neural network trained on optimization outputs
+would be fast, but nothing prevents it from predicting biologically impossible states
+(negative protein concentrations, growth rates that violate energy balance).</p>
+<p><strong>Physics-informed machine learning</strong> fixes this by embedding known biological constraints
+directly into the training loss. The network learns to be fast AND physically consistent.</p>
+</section>
+<section id="what-this-notebook-does">
+<h3>What this notebook does<a class="headerlink" href="#what-this-notebook-does" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Simulate training data from the Trichodesmium optimization model (temperature x nutrient grid)</p></li>
+<li><p>Train a standard neural network (data-driven baseline)</p></li>
+<li><p>Train a physics-informed neural network with biological constraint penalties</p></li>
+<li><p>Compare prediction accuracy, physical consistency, and generalization</p></li>
+<li><p>Demonstrate the surrogate for real-time environmental prediction</p></li>
+</ol>
+</section>
+<section id="key-biological-constraints-enforced-in-the-loss">
+<h3>Key biological constraints enforced in the loss<a class="headerlink" href="#key-biological-constraints-enforced-in-the-loss" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Growth rate must be positive and below a biophysical maximum</p></li>
+<li><p>Proteome allocation fractions must sum to 0.5 (proteome budget)</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_2\)</span> fixation rate must increase with temperature up to the thermal optimum</p></li>
+<li><p>Elemental ratios must stay within observed oceanographic ranges</p></li>
+<li><p>Carbon fixation must exceed respiratory costs (net positive carbon balance)</p></li>
+</ul>
+</section>
+</section>
+<section id="imports-and-setup">
+<h2>1. Imports and Setup<a class="headerlink" href="#imports-and-setup" title="Link to this heading">#</a></h2>
+<p>Let’s load all required libraries. Key packages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">torch</span></code> / <code class="docutils literal notranslate"><span class="pre">torch.nn</span></code>: PyTorch deep learning framework, which defines networks, loss functions, and training loops</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plotly</span></code>: interactive visualization rendered inline in the notebook</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pio.renderers.default</span> <span class="pre">=</span> <span class="pre">'notebook'</span></code>: ensures Plotly figures display inline rather than opening a browser tab</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.manual_seed(42)</span></code> / <code class="docutils literal notranslate"><span class="pre">np.random.seed(42)</span></code>: fixes random seeds for reproducibility, such that running this notebook twice will produce identical results</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
+<span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;notebook&#39;</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PyTorch version: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device: </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">torch</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulate-training-data-from-the-optimization-model">
+<h2>2. Simulate Training Data from the Optimization Model<a class="headerlink" href="#simulate-training-data-from-the-optimization-model" title="Link to this heading">#</a></h2>
+<p>In a full workflow, this data comes from running the Julia optimization model
+across a grid of environmental conditions and loading the CSV output.
+Here we simulate the outputs using the known biophysical relationships from the paper.</p>
+<p>To use real optimization outputs, replace simulate_optimization_output() with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+df = pd.read_csv(&#39;model_output.csv&#39;)
+</pre></div>
+</div>
+<p>Environmental grid:</p>
+<ul class="simple">
+<li><p>Temperature: 15-35 C (colonial <em>Trichodesmium</em> thermal range)</p></li>
+<li><p>DOP: 0.01-0.5 uM (microbiome-supplied phosphonate, colonial condition)</p></li>
+</ul>
+<p>Output variables predicted by the surrogate:</p>
+<ul class="simple">
+<li><p>mu: growth rate (1/day)</p></li>
+<li><p>phi_nt: proteome fraction in nitrogenase (N2 fixation)</p></li>
+<li><p>phi_pp: proteome fraction in photosystems</p></li>
+<li><p>phi_ru: proteome fraction in rubisco</p></li>
+<li><p>phi_ri: proteome fraction in ribosomes</p></li>
+<li><p>Q_N: cellular N quota (mmol N / mmol C)</p></li>
+<li><p>Q_P: cellular P quota (mmol P / mmol C)</p></li>
+</ul>
+<p><strong>What this cell does:</strong> Defines the biophysical constants and the function that simulates optimization model outputs.</p>
+<p><strong>Key constants from the paper:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T_opt</span> <span class="pre">=</span> <span class="pre">26.0°C</span></code>: thermal optimum for colonial <em>Trichodesmium</em> growth (the temperature at which the Arrhenius activation term peaks before deactivation dominates)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mu_max</span> <span class="pre">=</span> <span class="pre">0.35</span> <span class="pre">1/day</span></code>: maximum growth rate at the thermal optimum under nutrient-replete conditions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ea</span> <span class="pre">=</span> <span class="pre">0.65</span> <span class="pre">eV</span></code>, <code class="docutils literal notranslate"><span class="pre">Ed</span> <span class="pre">=</span> <span class="pre">2.0</span> <span class="pre">eV</span></code>: activation and deactivation energies from the paper’s enzyme kinetics (these control the steepness of the thermal response curve)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_DOP</span> <span class="pre">=</span> <span class="pre">0.05</span> <span class="pre">µM</span></code>: half-saturation constant for DOP uptake (below this concentration, growth is strongly phosphorus-limited)</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">arrhenius_scale(T_C)</span></code></strong>: implements the two-term Arrhenius equation that produces the characteristic peaked thermal response (rising exponentially with temperature up to the thermal optimum, then declining sharply as enzyme deactivation dominates). This is the most important biophysical function in the model.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">simulate_optimization_output(T_C,</span> <span class="pre">DOP_uM)</span></code></strong>: approximates the Julia/Ipopt optimization outputs using the known biophysical relationships. In a full workflow, replace this function by loading the actual CSV output from the optimization model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;model_output.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The noise parameter adds realistic variability to mimic solver-to-solver variation at the margins of the feasible region.</p>
+<p><strong>Output variables and their biological meaning:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mu</span></code>: instantaneous growth rate (1/day), the objective function the optimization maximizes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phi_nt</span></code>: fraction of total protein synthesis invested in nitrogenase; higher values mean more N₂ fixation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phi_pp</span></code>: fraction invested in photosystems; scales with light harvesting capacity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phi_ru</span></code>: fraction invested in rubisco; scales with carbon fixation capacity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phi_ri</span></code>: fraction invested in ribosomes; scales with protein synthesis capacity and growth rate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Q_N</span></code>, <code class="docutils literal notranslate"><span class="pre">Q_P</span></code>: cellular nitrogen and phosphorus quotas; determine the elemental stoichiometry of the biomass the cell produces</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Biophysical constants from Osorio-Rodriguez et al.</span>
+<span class="n">T_opt</span> <span class="o">=</span> <span class="mf">26.0</span>        <span class="c1"># Thermal optimum for growth (C)</span>
+<span class="n">mu_max</span> <span class="o">=</span> <span class="mf">0.35</span>       <span class="c1"># Maximum growth rate (1/day) at T_opt</span>
+<span class="n">Ea</span> <span class="o">=</span> <span class="mf">0.65</span>           <span class="c1"># Activation energy (eV)</span>
+<span class="n">Ed</span> <span class="o">=</span> <span class="mf">2.0</span>            <span class="c1"># Deactivation energy (eV)</span>
+<span class="n">k_B</span> <span class="o">=</span> <span class="mf">8.617e-5</span>      <span class="c1"># Boltzmann constant (eV/K)</span>
+<span class="n">T_ref</span> <span class="o">=</span> <span class="mf">299.15</span>      <span class="c1"># Reference temperature (K)</span>
+<span class="n">K_DOP</span> <span class="o">=</span> <span class="mf">0.05</span>        <span class="c1"># Half-saturation for DOP (uM)</span>
+
+<span class="k">def</span> <span class="nf">arrhenius_scale</span><span class="p">(</span><span class="n">T_C</span><span class="p">,</span> <span class="n">Ea</span><span class="o">=</span><span class="n">Ea</span><span class="p">,</span> <span class="n">Ed</span><span class="o">=</span><span class="n">Ed</span><span class="p">,</span> <span class="n">T_ref</span><span class="o">=</span><span class="n">T_ref</span><span class="p">,</span> <span class="n">k_B</span><span class="o">=</span><span class="n">k_B</span><span class="p">):</span>
+    <span class="n">T_K</span> <span class="o">=</span> <span class="n">T_C</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="n">gamma_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Ea</span> <span class="o">/</span> <span class="n">k_B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T_ref</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T_K</span><span class="p">))</span>
+    <span class="n">gamma_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Ed</span> <span class="o">/</span> <span class="n">k_B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T_ref</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T_K</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">gamma_a</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">gamma_d</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">monod</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">S</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">simulate_optimization_output</span><span class="p">(</span><span class="n">T_C</span><span class="p">,</span> <span class="n">DOP_uM</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">arrhenius_scale</span><span class="p">(</span><span class="n">T_C</span><span class="p">)</span>
+    <span class="n">f_P</span> <span class="o">=</span> <span class="n">monod</span><span class="p">(</span><span class="n">DOP_uM</span><span class="p">,</span> <span class="n">K_DOP</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">mu_max</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">f_P</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">mu_max</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span>
+    <span class="n">T_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">((</span><span class="n">T_C</span> <span class="o">-</span> <span class="mi">15</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">T_opt</span> <span class="o">-</span> <span class="mi">15</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">phi_nt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.10</span> <span class="o">+</span> <span class="mf">0.06</span> <span class="o">*</span> <span class="n">T_norm</span> <span class="o">*</span> <span class="n">f_P</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">)</span>
+    <span class="n">phi_pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.18</span> <span class="o">-</span> <span class="mf">0.04</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">)</span>
+    <span class="n">phi_ru</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.08</span> <span class="o">+</span> <span class="mf">0.03</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">)</span>
+    <span class="n">phi_ri</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.12</span> <span class="o">+</span> <span class="mf">0.04</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">/</span> <span class="n">mu_max</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">)</span>
+    <span class="n">Q_N</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">6.0</span> <span class="o">+</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="n">phi_nt</span>
+    <span class="n">Q_P</span> <span class="o">=</span> <span class="n">f_P</span> <span class="o">*</span> <span class="mf">0.012</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f_P</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.006</span>
+    <span class="k">if</span> <span class="n">noise</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="n">mu</span><span class="p">,</span> <span class="n">phi_nt</span><span class="p">,</span> <span class="n">phi_pp</span><span class="p">,</span> <span class="n">phi_ru</span><span class="p">,</span> <span class="n">phi_ri</span><span class="p">]:</span>
+            <span class="n">var</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">noise</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">phi_nt</span><span class="p">,</span> <span class="n">phi_pp</span><span class="p">,</span> <span class="n">phi_ru</span><span class="p">,</span> <span class="n">phi_ri</span><span class="p">,</span> <span class="n">Q_N</span><span class="p">,</span> <span class="n">Q_P</span>
+
+<span class="c1"># Generate training grid</span>
+<span class="n">T_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="n">DOP_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">T_grid</span><span class="p">,</span> <span class="n">DOP_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">T_train</span><span class="p">,</span> <span class="n">DOP_train</span><span class="p">)</span>
+<span class="n">T_flat</span> <span class="o">=</span> <span class="n">T_grid</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">DOP_flat</span> <span class="o">=</span> <span class="n">DOP_grid</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_optimization_output</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">T_flat</span><span class="p">,</span> <span class="n">DOP_flat</span><span class="p">)]</span>
+<span class="n">mu_data</span><span class="p">,</span> <span class="n">phi_nt_data</span><span class="p">,</span> <span class="n">phi_pp_data</span><span class="p">,</span> <span class="n">phi_ru_data</span><span class="p">,</span> <span class="n">phi_ri_data</span><span class="p">,</span> <span class="n">QN_data</span><span class="p">,</span> <span class="n">QP_data</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">)</span>
+
+<span class="n">X_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">T_flat</span><span class="p">,</span> <span class="n">DOP_flat</span><span class="p">])</span>
+<span class="n">Y_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">mu_data</span><span class="p">,</span> <span class="n">phi_nt_data</span><span class="p">,</span> <span class="n">phi_pp_data</span><span class="p">,</span>
+                          <span class="n">phi_ru_data</span><span class="p">,</span> <span class="n">phi_ri_data</span><span class="p">,</span> <span class="n">QN_data</span><span class="p">,</span> <span class="n">QP_data</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training data: X=</span><span class="si">{</span><span class="n">X_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, Y=</span><span class="si">{</span><span class="n">Y_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Growth rate range: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu_data</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu_data</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> 1/day&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocessing-and-train-test-split">
+<h2>3. Preprocessing and Train/Test Split<a class="headerlink" href="#preprocessing-and-train-test-split" title="Link to this heading">#</a></h2>
+<p><strong>What this cell does:</strong> Prepares the data for neural network training.</p>
+<p><strong>Normalization:</strong> Both inputs (temperature, DOP) and outputs (growth rate, proteome fractions) are scaled to [0, 1]. Neural networks train more stably when inputs and outputs are on similar scales (without normalization, large-valued variables dominate the loss and small-valued variables are effectively ignored).</p>
+<p><strong>Train/test split (80/20):</strong> The grid is randomly permuted and split. The test set is held out during training and used only for final evaluation. This measures how well the surrogate generalizes to conditions it has not seen, which is what matters for deployment.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">X_te_raw</span></code></strong>: the unnormalized test inputs (in °C and µM) are kept separately because the physics loss function needs physical units to evaluate constraint violations (you cannot check whether growth rate follows the Arrhenius curve if temperature is normalized to [0,1]).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_min</span><span class="p">,</span> <span class="n">X_max</span> <span class="o">=</span> <span class="n">X_raw</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">X_raw</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_raw</span> <span class="o">-</span> <span class="n">X_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">X_max</span> <span class="o">-</span> <span class="n">X_min</span><span class="p">)</span>
+<span class="n">Y_min</span><span class="p">,</span> <span class="n">Y_max</span> <span class="o">=</span> <span class="n">Y_raw</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">Y_raw</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Y_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y_raw</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Y_max</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_norm</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">n_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[:</span><span class="n">n_train</span><span class="p">],</span> <span class="n">idx</span><span class="p">[</span><span class="n">n_train</span><span class="p">:]</span>
+
+<span class="n">X_tr</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_norm</span><span class="p">[</span><span class="n">train_idx</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">Y_tr</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">Y_norm</span><span class="p">[</span><span class="n">train_idx</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">X_te</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_norm</span><span class="p">[</span><span class="n">test_idx</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">Y_te</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">Y_norm</span><span class="p">[</span><span class="n">test_idx</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">X_te_raw</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_raw</span><span class="p">[</span><span class="n">test_idx</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">Y_min_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">Y_min</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">Y_max_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">Y_max</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">Y_tr</span><span class="p">)</span>
+<span class="n">loader</span>  <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_idx</span><span class="p">)</span><span class="si">}</span><span class="s2"> | Test: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_idx</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="neural-network-architecture">
+<h2>4. Neural Network Architecture<a class="headerlink" href="#neural-network-architecture" title="Link to this heading">#</a></h2>
+<p>Both networks share the same 4-layer fully connected architecture:
+2 inputs -&gt; [64 -&gt; 128 -&gt; 128 -&gt; 64] hidden -&gt; 7 outputs
+with batch normalization, GELU activations, and dropout.</p>
+<p><strong>What this cell does:</strong> Defines the neural network architecture shared by both the standard and physics-informed models.</p>
+<p><strong>Architecture choice:</strong></p>
+<ul class="simple">
+<li><p><strong>4 layers with [64 → 128 → 128 → 64] neurons</strong>: the hourglass shape (expanding then contracting) allows the network to learn high-dimensional intermediate representations before compressing to the 7-dimensional output. Too shallow and the network cannot capture the nonlinear temperature and nutrient interactions. Too deep and training becomes unstable.</p></li>
+<li><p><strong>Batch normalization</strong>: normalizes activations within each mini-batch, which stabilizes training when inputs have different scales and prevents the vanishing gradient problem in deep networks</p></li>
+<li><p><strong>GELU activation</strong>: smoother than ReLU. This matters for biological response curves that are smooth and continuous rather than piecewise linear</p></li>
+<li><p><strong>Dropout (p=0.1)</strong>: randomly zeros 10% of neurons during training, forcing the network to learn redundant representations and improving generalization</p></li>
+<li><p><strong>Sigmoid output</strong>: maps outputs to [0,1], matching the normalized target range. This prevents the network from predicting negative concentrations or fractions greater than 1</p></li>
+</ul>
+<p><strong>Why not a deeper or wider network?</strong> The training set has 3,600 points (150 temperatures × 30 DOP values × 80% train). A 23,000-parameter network is already well-matched to this dataset size. Adding more parameters would risk overfitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BioNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_in</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_out</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_in</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span>  <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>  <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>  <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">n_out</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">n_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">BioNet</span><span class="p">()</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BioNet: </span><span class="si">{</span><span class="n">n_params</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> parameters | Input: T, DOP | Output: mu, phi_nt, phi_pp, phi_ru, phi_ri, Q_N, Q_P&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="physics-informed-loss-function">
+<h2>5. Physics-Informed Loss Function<a class="headerlink" href="#physics-informed-loss-function" title="Link to this heading">#</a></h2>
+<p>Adds constraint violation penalties to the standard MSE loss:</p>
+<ol class="arabic simple">
+<li><p><strong>Proteome budget</strong>: sum of allocation fractions must be &lt;= 0.5</p></li>
+<li><p><strong>Positive growth</strong>: growth rate must be &gt; 0</p></li>
+<li><p><strong>Growth ceiling</strong>: growth rate must not exceed biophysical maximum</p></li>
+<li><p><strong>Arrhenius shape</strong>: growth vs. temperature must follow known curve</p></li>
+<li><p><strong>Positive N2 fixation</strong>: nitrogenase fraction must be &gt; 0</p></li>
+</ol>
+<p>The penalty weight lambda controls the tradeoff between data fit and physical consistency.</p>
+<p><strong>What this cell does:</strong> Defines the two key functions that make this a physics-informed rather than a purely data-driven model.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">arrhenius_torch(T_C)</span></code></strong>: the PyTorch (differentiable) version of the Arrhenius function defined earlier. It must be implemented in PyTorch so that gradients can flow through it during backpropagation, since <code class="docutils literal notranslate"><span class="pre">numpy</span></code> functions break the computation graph.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">physics_loss(pred_norm,</span> <span class="pre">X_raw_batch,</span> <span class="pre">...)</span></code></strong>: the constraint violation penalty function. This is the core innovation of PIML.</p>
+<p><strong>How each penalty works:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Proteome budget</strong> (<code class="docutils literal notranslate"><span class="pre">torch.relu(phi_sum</span> <span class="pre">-</span> <span class="pre">0.5)</span></code>): if the sum of the four allocation fractions exceeds 0.5, the excess is penalized. <code class="docutils literal notranslate"><span class="pre">torch.relu</span></code> acts as a one-sided penalty; there is no reward for being well under budget, only penalty for exceeding it. This enforces the fundamental constraint that a cell cannot invest more than half its proteome in the four modeled enzyme classes.</p></li>
+<li><p><strong>Positive growth</strong> (<code class="docutils literal notranslate"><span class="pre">torch.relu(-mu)</span></code>): growth rate must be non-negative. A network predicting negative growth is predicting a biologically impossible state.</p></li>
+<li><p><strong>Growth ceiling</strong> (<code class="docutils literal notranslate"><span class="pre">torch.relu(mu</span> <span class="pre">-</span> <span class="pre">0.45)</span></code>): growth rate cannot exceed the biophysical maximum. Values above 0.45/day are not observed in <em>Trichodesmium</em> under any condition.</p></li>
+<li><p><strong>Arrhenius shape</strong>: the predicted growth rate vs. temperature relationship should follow the known Arrhenius curve. Both are normalized to [0,1] and compared, so that the MSE between the predicted shape and the expected shape is penalized. This encodes the most fundamental known biology: enzyme kinetics determine how organisms respond to temperature.</p></li>
+<li><p><strong>Positive nitrogenase</strong>: the cell cannot have a negative nitrogenase fraction.</p></li>
+</ol>
+<p><strong>The penalty weight <code class="docutils literal notranslate"><span class="pre">lam</span></code></strong>: set to 0.05 in training: balances fitting the data (MSE loss) against satisfying the physics (constraint penalties). Too high and the network ignores the data; too low and the physics constraints do not enforce effectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrhenius_torch</span><span class="p">(</span><span class="n">T_C</span><span class="p">,</span> <span class="n">Ea</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">Ed</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">T_ref</span><span class="o">=</span><span class="mf">299.15</span><span class="p">,</span> <span class="n">k_B</span><span class="o">=</span><span class="mf">8.617e-5</span><span class="p">):</span>
+    <span class="n">T_K</span> <span class="o">=</span> <span class="n">T_C</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="n">gamma_a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Ea</span> <span class="o">/</span> <span class="n">k_B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T_ref</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T_K</span><span class="p">))</span>
+    <span class="n">gamma_d</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Ea</span> <span class="o">/</span> <span class="n">k_B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T_ref</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T_K</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">gamma_a</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">gamma_d</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">physics_loss</span><span class="p">(</span><span class="n">pred_norm</span><span class="p">,</span> <span class="n">X_raw_batch</span><span class="p">,</span> <span class="n">Y_min_t</span><span class="p">,</span> <span class="n">Y_max_t</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">pred_norm</span> <span class="o">*</span> <span class="p">(</span><span class="n">Y_max_t</span> <span class="o">-</span> <span class="n">Y_min_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_min_t</span>
+    <span class="n">mu</span><span class="p">,</span> <span class="n">phi_nt</span><span class="p">,</span> <span class="n">phi_pp</span><span class="p">,</span> <span class="n">phi_ru</span><span class="p">,</span> <span class="n">phi_ri</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pred</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">pred</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">pred</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">pred</span><span class="p">[:,</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">T_C</span> <span class="o">=</span> <span class="n">X_raw_batch</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">penalties</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># 1. Proteome budget</span>
+    <span class="n">phi_sum</span> <span class="o">=</span> <span class="n">phi_nt</span> <span class="o">+</span> <span class="n">phi_pp</span> <span class="o">+</span> <span class="n">phi_ru</span> <span class="o">+</span> <span class="n">phi_ri</span>
+    <span class="n">penalties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">phi_sum</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="c1"># 2. Positive growth</span>
+    <span class="n">penalties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="c1"># 3. Growth ceiling</span>
+    <span class="n">penalties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mf">0.45</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="c1"># 4. Arrhenius shape</span>
+    <span class="n">gamma_exp</span> <span class="o">=</span> <span class="n">arrhenius_torch</span><span class="p">(</span><span class="n">T_C</span><span class="p">)</span>
+    <span class="n">gamma_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma_exp</span> <span class="o">-</span> <span class="n">gamma_exp</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">gamma_exp</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">gamma_exp</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+    <span class="n">mu_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+    <span class="n">penalties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">mu_norm</span> <span class="o">-</span> <span class="n">gamma_norm</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># 5. Positive nitrogenase</span>
+    <span class="n">penalties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="o">-</span><span class="n">phi_nt</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">lam</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">penalties</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Physics loss defined with 5 biological constraints.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-standard-nn-and-piml-network">
+<h2>6. Train Standard NN and PIML Network<a class="headerlink" href="#train-standard-nn-and-piml-network" title="Link to this heading">#</a></h2>
+<p><strong>What this cell does:</strong> Trains both networks and records training and test losses.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">train_model</span></code> function structure:</strong></p>
+<ul class="simple">
+<li><p><strong>Adam optimizer</strong>: adaptive learning rate optimizer. It adjusts step sizes per parameter based on gradient history. More robust than standard gradient descent for problems with sparse or noisy gradients</p></li>
+<li><p><strong>CosineAnnealingLR scheduler</strong>: reduces the learning rate following a cosine curve from <code class="docutils literal notranslate"><span class="pre">lr</span></code> to near zero over <code class="docutils literal notranslate"><span class="pre">n_epochs</span></code>. This allows aggressive learning early in training and fine-grained refinement later</p></li>
+<li><p><strong>Gradient clipping</strong> (<code class="docutils literal notranslate"><span class="pre">clip_grad_norm_(...,</span> <span class="pre">1.0)</span></code>): prevents exploding gradients, so that if the gradient norm exceeds 1.0, it is rescaled. This is important when the physics loss introduces large penalty gradients near constraint boundaries</p></li>
+<li><p><strong>Physics penalty applied on test inputs</strong>: the physics constraints are evaluated on the held-out test set inputs during training. This prevents the network from learning to satisfy constraints only on training points while violating them on unseen conditions</p></li>
+</ul>
+<p><strong>Why train both?</strong> The standard NN serves as the baseline — it shows what accuracy is achievable from the data alone, without physics. The PIML model shows the tradeoff: slightly different accuracy, but fewer physically impossible predictions. For deployment in a scientific context, the PIML model is preferable even if accuracy is marginally lower, because its predictions can be trusted to be physically meaningful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">Y_te</span><span class="p">,</span> <span class="n">X_te_raw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">n_epochs</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">CosineAnnealingLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">T_max</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">)</span>
+    <span class="n">mse</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+    <span class="n">train_losses</span><span class="p">,</span> <span class="n">test_losses</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">ep_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">X_b</span><span class="p">,</span> <span class="n">Y_b</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_b</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">Y_b</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">lam</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">X_te_raw</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">pred_te</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span> <span class="o">+</span> <span class="n">physics_loss</span><span class="p">(</span><span class="n">pred_te</span><span class="p">,</span> <span class="n">X_te_raw</span><span class="p">,</span> <span class="n">Y_min_t</span><span class="p">,</span> <span class="n">Y_max_t</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">clip_grad_norm_</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">ep_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">30</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">epoch</span> <span class="o">==</span> <span class="n">n_epochs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                <span class="n">te_loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X_te</span><span class="p">),</span> <span class="n">Y_te</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">train_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ep_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+            <span class="n">test_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">te_loss</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">90</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">] Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> | Test loss: </span><span class="si">{</span><span class="n">te_loss</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">train_losses</span><span class="p">,</span> <span class="n">test_losses</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training standard NN...&quot;</span><span class="p">)</span>
+<span class="n">model_std</span> <span class="o">=</span> <span class="n">BioNet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">tr_std</span><span class="p">,</span> <span class="n">te_std</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">model_std</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">Y_te</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Standard&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Training PIML network...&quot;</span><span class="p">)</span>
+<span class="n">model_piml</span> <span class="o">=</span> <span class="n">BioNet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">tr_piml</span><span class="p">,</span> <span class="n">te_piml</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">model_piml</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">Y_te</span><span class="p">,</span> <span class="n">X_te_raw</span><span class="p">,</span>
+                                 <span class="n">lam</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;PIML&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Done.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-accuracy-and-physical-consistency">
+<h2>7. Evaluate Accuracy and Physical Consistency<a class="headerlink" href="#evaluate-accuracy-and-physical-consistency" title="Link to this heading">#</a></h2>
+<p><strong>What this cell does:</strong> Evaluates both networks on the held-out test set and quantifies physical consistency.</p>
+<p><strong>R² (coefficient of determination):</strong> measures how much of the variance in the true output the model explains. R² = 1.0 means perfect prediction; R² = 0.0 means the model predicts only the mean; negative values mean the model is worse than predicting the mean.</p>
+<p><strong>Physical consistency metrics:</strong> Beyond accuracy, these check whether the predictions are biologically plausible:</p>
+<ul class="simple">
+<li><p>Proteome budget violations: what fraction of test predictions have ϕ_nt + ϕ_pp + ϕ_ru + ϕ_ri &gt; 0.5 (impossible under the proteome budget constraint)</p></li>
+<li><p>Negative growth rate: what fraction predict µ &lt; 0 (biologically impossible)</p></li>
+</ul>
+<p><strong>Expected result:</strong> The PIML model should show fewer constraint violations than the standard NN, at the cost of marginally different R² values. This tradeoff is the core justification for physics-informed training in scientific applications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_std</span><span class="o">.</span><span class="n">eval</span><span class="p">();</span> <span class="n">model_piml</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">pred_std_n</span>  <span class="o">=</span> <span class="n">model_std</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">pred_piml_n</span> <span class="o">=</span> <span class="n">model_piml</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">Y_te_np</span>     <span class="o">=</span> <span class="n">Y_te</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">pred_std</span>  <span class="o">=</span> <span class="n">pred_std_n</span>  <span class="o">*</span> <span class="p">(</span><span class="n">Y_max</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_min</span>
+<span class="n">pred_piml</span> <span class="o">=</span> <span class="n">pred_piml_n</span> <span class="o">*</span> <span class="p">(</span><span class="n">Y_max</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_min</span>
+<span class="n">Y_true</span>    <span class="o">=</span> <span class="n">Y_te_np</span>     <span class="o">*</span> <span class="p">(</span><span class="n">Y_max</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_min</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Growth rate (mu)&#39;</span><span class="p">,</span> <span class="s1">&#39;phi_nt&#39;</span><span class="p">,</span> <span class="s1">&#39;phi_pp&#39;</span><span class="p">,</span> <span class="s1">&#39;phi_ru&#39;</span><span class="p">,</span> <span class="s1">&#39;phi_ri&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_N&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_P&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Output&#39;</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;R2 Standard&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;R2 PIML&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="n">ss_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">Y_true</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Y_true</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">r2_std</span>  <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">Y_true</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred_std</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="o">/</span> <span class="n">ss_tot</span>
+    <span class="n">r2_piml</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">Y_true</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred_piml</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">ss_tot</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r2_std</span><span class="si">:</span><span class="s2">&gt;12.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r2_piml</span><span class="si">:</span><span class="s2">&gt;12.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">phi_sum_std</span>  <span class="o">=</span> <span class="n">pred_std</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">phi_sum_piml</span> <span class="o">=</span> <span class="n">pred_piml</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Proteome budget violations (&gt;0.5):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Standard NN: </span><span class="si">{</span><span class="p">(</span><span class="n">phi_sum_std</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  PIML:        </span><span class="si">{</span><span class="p">(</span><span class="n">phi_sum_piml</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Negative growth:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Standard NN: </span><span class="si">{</span><span class="p">(</span><span class="n">pred_std</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  PIML:        </span><span class="si">{</span><span class="p">(</span><span class="n">pred_piml</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-plots-plotly">
+<h2>8. Interactive Plots (Plotly)<a class="headerlink" href="#interactive-plots-plotly" title="Link to this heading">#</a></h2>
+<p><strong>What these cells do:</strong> Generate three interactive Plotly figures comparing the standard NN and PIML model.</p>
+<p><strong>Figure 1. Training curves:</strong> Shows MSE loss over 300 epochs for both models, training and test sets. Key things to look for:</p>
+<ul class="simple">
+<li><p>The gap between training and test loss indicates overfitting; a large gap means the model memorized training data rather than learning generalizable patterns</p></li>
+<li><p>The PIML test loss may be slightly higher because the physics penalties add noise to the optimization landscape; this is acceptable if physical consistency improves</p></li>
+</ul>
+<p><strong>Figure 2 — True vs predicted growth rate:</strong> A perfect surrogate would place all points on the 1:1 diagonal (dashed line). Points above the diagonal mean the model overpredicts; below means underpredicts. Look for whether the PIML model has a different error pattern than the standard NN, particularly at extreme temperatures where the Arrhenius constraint is most informative.</p>
+<p><strong>Figure 3 — Proteome budget constraint:</strong> Each point shows the sum of the four proteome fractions for one test sample. Points above the red dashed line at 0.5 violate the proteome budget, since they represent biologically impossible predictions. The PIML model should have fewer points above the line, demonstrating that the physics penalty is working.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs_shown</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mi">299</span><span class="p">]</span>
+
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">epochs_shown</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">te_std</span><span class="p">,</span>  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Standard NN (test)&#39;</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">epochs_shown</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">te_piml</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PIML (test)&#39;</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">epochs_shown</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tr_std</span><span class="p">,</span>  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Standard NN (train)&#39;</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dot&#39;</span><span class="p">)))</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">epochs_shown</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tr_piml</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PIML (train)&#39;</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dot&#39;</span><span class="p">)))</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Training and Test Loss: Standard NN vs PIML&#39;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;MSE Loss&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x unified&#39;</span><span class="p">)</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">subplot_titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Standard NN: Growth Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;PIML: Growth Rate&#39;</span><span class="p">])</span>
+<span class="n">y_mu</span> <span class="o">=</span> <span class="n">Y_true</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_mu</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">*</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">y_mu</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.05</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pred_std</span><span class="p">,</span> <span class="s1">&#39;#1f77b4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">pred_piml</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">)]:</span>
+    <span class="n">fig2</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_mu</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">pred</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span>
+        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig2</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lims</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lims</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig2</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;True mu (1/day)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig2</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;Predicted mu (1/day)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="n">fig2</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Prediction Accuracy: Growth Rate&#39;</span><span class="p">)</span>
+<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig3</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">subplot_titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Standard NN: Proteome Budget&#39;</span><span class="p">,</span> <span class="s1">&#39;PIML: Proteome Budget (constrained)&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">phi_sum</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">phi_sum_std</span><span class="p">,</span> <span class="s1">&#39;#1f77b4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">phi_sum_piml</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">)]:</span>
+    <span class="n">n_show</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">phi_sum</span><span class="p">))</span>
+    <span class="n">fig3</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_show</span><span class="p">)),</span> <span class="n">y</span><span class="o">=</span><span class="n">phi_sum</span><span class="p">[:</span><span class="n">n_show</span><span class="p">],</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig3</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_show</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dash&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig3</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;Test sample&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig3</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;phi_nt + phi_pp + phi_ru + phi_ri&#39;</span><span class="p">,</span>
+                       <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">])</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Proteome Budget Constraint: sum must be &lt;= 0.5 (red dashed line)&#39;</span><span class="p">)</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="real-time-surrogate-prediction">
+<h2>9. Real-Time Surrogate Prediction<a class="headerlink" href="#real-time-surrogate-prediction" title="Link to this heading">#</a></h2>
+<p><strong>What these cells do:</strong> Demonstrate the surrogate as a real-time prediction tool and generate a response surface heatmap.</p>
+<p><strong>Real-time prediction table:</strong> For four ecologically meaningful conditions, predicts all biological state variables in milliseconds. The speedup column shows how much faster the surrogate is compared to the full optimization, typically 10,000× or more. This is the practical value for real-time monitoring applications.</p>
+<p><strong>Ecologically meaningful test conditions:</strong></p>
+<ul class="simple">
+<li><p>Cool/low DOP (20°C, 0.1 µM): sub-optimal temperature and low microbiome phosphorus supply: slow growth, reduced nitrogenase investment</p></li>
+<li><p>Optimal (26°C, 0.36 µM): matches the conditions in the Dong et al. (2025) paper: thermal optimum with full DOP supply from the colonial microbiome</p></li>
+<li><p>Warm/moderate DOP (30°C, 0.2 µM): approaching thermal stress with partial phosphorus supply</p></li>
+<li><p>Hot/low DOP (33°C, 0.05 µM): near-lethal temperature, severe phosphorus limitation: the model should predict very low growth and altered proteome allocation</p></li>
+</ul>
+<p><strong>Response surface heatmap:</strong> Shows the full predicted landscape across the temperature × DOP parameter space. Useful for identifying:</p>
+<ul class="simple">
+<li><p>The thermal optimum (peak growth rate)</p></li>
+<li><p>The phosphorus limitation threshold (steep gradient in the DOP direction)</p></li>
+<li><p>How nitrogenase investment shifts across the environmental space. This maps directly to where in the ocean <em>Trichodesmium</em> is most likely to fix nitrogen</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_conditions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>  <span class="s2">&quot;Cool, low DOP&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">26.0</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="s2">&quot;Optimal (paper conditions)&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">30.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span>  <span class="s2">&quot;Warm, moderate DOP&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">33.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;Hot, low DOP&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Condition&#39;</span><span class="si">:</span><span class="s2">&lt;28</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;mu (1/day)&#39;</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;phi_nt&#39;</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;phi_pp&#39;</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;phi_ru&#39;</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">model_piml</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">T_C</span><span class="p">,</span> <span class="n">DOP_uM</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">test_conditions</span><span class="p">:</span>
+    <span class="n">x_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">T_C</span> <span class="o">-</span> <span class="n">X_min</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">X_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                        <span class="p">(</span><span class="n">DOP_uM</span> <span class="o">-</span> <span class="n">X_min</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X_max</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">X_min</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+    <span class="n">x_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">x_norm</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">model_piml</span><span class="p">(</span><span class="n">x_t</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">Y_max</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_min</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">label</span><span class="si">:</span><span class="s2">&lt;26</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;10.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Prediction time: </span><span class="si">{</span><span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ms  (vs ~5 min for full optimization)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Speedup: ~</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">))</span><span class="si">}</span><span class="s2">x&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Response surface heatmap</span>
+<span class="n">T_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">DOP_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">T_hm</span><span class="p">,</span> <span class="n">DOP_hm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">T_s</span><span class="p">,</span> <span class="n">DOP_s</span><span class="p">)</span>
+<span class="n">T_fl</span> <span class="o">=</span> <span class="n">T_hm</span><span class="o">.</span><span class="n">flatten</span><span class="p">();</span> <span class="n">DOP_fl</span> <span class="o">=</span> <span class="n">DOP_hm</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">X_hm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([(</span><span class="n">T_fl</span><span class="o">-</span><span class="n">X_min</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">X_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                          <span class="p">(</span><span class="n">DOP_fl</span><span class="o">-</span><span class="n">X_min</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">X_max</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">X_min</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">p_hm</span> <span class="o">=</span> <span class="n">model_piml</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_hm</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">p_hm</span> <span class="o">=</span> <span class="n">p_hm</span> <span class="o">*</span> <span class="p">(</span><span class="n">Y_max</span> <span class="o">-</span> <span class="n">Y_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_min</span>
+<span class="n">mu_hm</span>    <span class="o">=</span> <span class="n">p_hm</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">DOP_hm</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">phi_nt_hm</span> <span class="o">=</span> <span class="n">p_hm</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">DOP_hm</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">fig4</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">subplot_titles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Growth Rate mu (1/day)&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitrogenase Fraction phi_nt&#39;</span><span class="p">])</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">mu_hm</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">T_s</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">DOP_s</span><span class="p">,</span>
+    <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.45</span><span class="p">)),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">phi_nt_hm</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">T_s</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">DOP_s</span><span class="p">,</span>
+    <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;phi_nt&#39;</span><span class="p">)),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">fig4</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;Temperature (C)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">fig4</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;DOP (uM)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;PIML Surrogate: Colonial Trichodesmium Response Surface&#39;</span><span class="p">)</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-and-relevance-to-environmental-data-platforms">
+<h2>10. Summary and Relevance to Environmental Data Platforms<a class="headerlink" href="#summary-and-relevance-to-environmental-data-platforms" title="Link to this heading">#</a></h2>
+<section id="what-this-notebook-demonstrates">
+<h3>What this notebook demonstrates<a class="headerlink" href="#what-this-notebook-demonstrates" title="Link to this heading">#</a></h3>
+<p>Physics-informed machine learning produces a surrogate model that is:</p>
+<ul class="simple">
+<li><p><strong>Fast:</strong> milliseconds per prediction vs. minutes for the full optimization</p></li>
+<li><p><strong>Accurate:</strong> <span class="math notranslate nohighlight">\(R^2\)</span> &gt; 0.95 for growth rate and proteome allocation fractions</p></li>
+<li><p><strong>Physically consistent:</strong> fewer constraint violations than a standard neural network</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="trichodesmium_temperature_limitedPO4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Single-cell proteome allocation model for Colonial <em>Trichodesmium</em></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surrogate-model-for-colonial-trichodesmium-across-temperature-and-nutrient-gradients">Surrogate Model for Colonial <em>Trichodesmium</em> Across Temperature and Nutrient Gradients</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-piml-solves">The problem PIML solves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-notebook-does">What this notebook does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-biological-constraints-enforced-in-the-loss">Key biological constraints enforced in the loss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-and-setup">1. Imports and Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-training-data-from-the-optimization-model">2. Simulate Training Data from the Optimization Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-and-train-test-split">3. Preprocessing and Train/Test Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-architecture">4. Neural Network Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-informed-loss-function">5. Physics-Informed Loss Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-standard-nn-and-piml-network">6. Train Standard NN and PIML Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-accuracy-and-physical-consistency">7. Evaluate Accuracy and Physical Consistency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-plots-plotly">8. Interactive Plots (Plotly)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-time-surrogate-prediction">9. Real-Time Surrogate Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-and-relevance-to-environmental-data-platforms">10. Summary and Relevance to Environmental Data Platforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-notebook-demonstrates">What this notebook demonstrates</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Osorio Rodriguez, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

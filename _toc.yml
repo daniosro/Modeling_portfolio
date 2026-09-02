@@ -7,3 +7,5 @@ chapters:
     title: "Wastewater and Carbon Mineralization (CREW)"
   - file: notebooks/trichodesmium_temperature_limitedPO4
     title: "Colonial Trichodesmium Optimization"
+  - file: notebooks/piml_trichodesmium
+    title: "Physics-Informed ML: Trichodesmium Surrogate"

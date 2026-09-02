@@ -75,6 +75,7 @@ The key modeling elements shared across all notebooks:
 | Solver | SciPy LSODA | SciPy LSODA | JuMP/Ipopt NLP | PyTorch Adam |
 | Key parameter | Solid holdup, grain size | HRT, SRT, mineral loading | Temperature, nutrient availability | Penalty weight lambda |
 | Output | Alkalinity, pH, efficiency | COD removal, CO2 sequestration | Growth rate, proteome allocation | Growth rate, proteome fractions (real-time) |
+
 ---
 
 ## Running locally

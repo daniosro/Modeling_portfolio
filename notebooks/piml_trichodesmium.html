@@ -454,7 +454,7 @@ directly into the training loss. The network learns to be fast AND physically co
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;notebook&#39;</span>
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;iframe&#39;</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -466,16 +466,8 @@ directly into the training loss. The network learns to be fast AND physically co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">torch</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PyTorch version: 2.14.0
+Device: cpu
 </pre></div>
 </div>
 </div>
@@ -585,6 +577,12 @@ df = pd.read_csv(&#39;model_output.csv&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training data: X=(4500, 2), Y=(4500, 7)
+Growth rate range: 0.011 - 0.169 1/day
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="preprocessing-and-train-test-split">
@@ -616,6 +614,11 @@ df = pd.read_csv(&#39;model_output.csv&#39;)
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">Y_tr</span><span class="p">)</span>
 <span class="n">loader</span>  <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_idx</span><span class="p">)</span><span class="si">}</span><span class="s2"> | Test: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_idx</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train: 3600 | Test: 900
 </pre></div>
 </div>
 </div>
@@ -653,6 +656,11 @@ with batch normalization, GELU activations, and dropout.</p>
 
 <span class="n">n_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">BioNet</span><span class="p">()</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BioNet: </span><span class="si">{</span><span class="n">n_params</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> parameters | Input: T, DOP | Output: mu, phi_nt, phi_pp, phi_ru, phi_ri, Q_N, Q_P&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BioNet: 34,503 parameters | Input: T, DOP | Output: mu, phi_nt, phi_pp, phi_ru, phi_ri, Q_N, Q_P
 </pre></div>
 </div>
 </div>
@@ -716,6 +724,11 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Physics loss defined with 5 biological constraints.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="train-standard-nn-and-piml-network">
@@ -775,6 +788,23 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training standard NN...
+  [Standard] Epoch   0 | Test loss: 0.00767
+  [Standard] Epoch  90 | Test loss: 0.00082
+  [Standard] Epoch 180 | Test loss: 0.00105
+  [Standard] Epoch 270 | Test loss: 0.00049
+
+Training PIML network...
+  [PIML] Epoch   0 | Test loss: 0.00870
+  [PIML] Epoch  90 | Test loss: 0.01119
+  [PIML] Epoch 180 | Test loss: 0.01591
+  [PIML] Epoch 270 | Test loss: 0.01543
+
+Done.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="evaluate-accuracy-and-physical-consistency">
@@ -819,6 +849,26 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output                  R2 Standard      R2 PIML
+--------------------------------------------------
+  Growth rate (mu)           0.9915      -0.5431
+  phi_nt                     0.9958       0.9682
+  phi_pp                     0.9919       0.9562
+  phi_ru                     0.9919       0.9689
+  phi_ri                     0.9916       0.9417
+  Q_N                        0.9958       0.9846
+  Q_P                        0.9912       0.9774
+
+Proteome budget violations (&gt;0.5):
+  Standard NN: 80.9%
+  PIML:        84.3%
+Negative growth:
+  Standard NN: 0.0%
+  PIML:        0.0%
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="interactive-plots-plotly">
@@ -850,6 +900,16 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="420"
+    src="iframe_figures/figure_8.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -869,6 +929,16 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="440"
+    src="iframe_figures/figure_9.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -889,6 +959,16 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="440"
+    src="iframe_figures/figure_10.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 </section>
 <section id="real-time-surrogate-prediction">
@@ -935,6 +1015,19 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Condition                    mu (1/day)   phi_nt   phi_pp   phi_ru
+------------------------------------------------------------
+  Cool, low DOP                   0.098    0.119    0.160    0.095
+  Optimal (paper conditions)      0.123    0.146    0.160    0.095
+  Warm, moderate DOP              0.131    0.146    0.165    0.091
+  Hot, low DOP                    0.135    0.129    0.168    0.089
+
+Prediction time: 0.106 ms  (vs ~5 min for full optimization)
+Speedup: ~2820211x
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -966,6 +1059,16 @@ with batch normalization, GELU activations, and dropout.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="460"
+    src="iframe_figures/figure_12.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 </section>
 <section id="summary-and-relevance-to-environmental-data-platforms">

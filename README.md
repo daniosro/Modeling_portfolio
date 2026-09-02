@@ -69,7 +69,7 @@ Each model encodes known mechanisms, such as enzyme kinetics, dissolution rate l
 The key modeling elements shared across all notebooks:
 
 | Element | AWL Reactor | CREW Model | *Trichodesmium* | *Trichodesmium* ML |
-|---------|-------------|------------|-----------------|
+| --- | --- | --- | --- |
 | Kinetics | Calcite dissolution rate law | Monod + first-order | Michaelis-Menten | Neural network + physics penalties |
 | Mass balance | ODE per reactor unit | ODE per state variable | Algebraic constraints | Backpropagation + constraint loss |
 | Solver | SciPy LSODA | SciPy LSODA | JuMP/Ipopt NLP | PyTorch Adam |

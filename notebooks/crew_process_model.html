@@ -404,8 +404,8 @@
 <h2>1. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
-<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;notebook&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;browser&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -415,7 +415,7 @@
 <h2>2. Display Settings<a class="headerlink" href="#display-settings" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -433,14 +433,14 @@
 <p><strong>Reactor parameters</strong>: HRT = 12 hours, SRT = 10 days, aeration rate, and typical municipal wastewater influent concentrations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ASM1_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ASM1_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;mu_H&#39;</span><span class="p">:</span>          <span class="mf">6.0</span><span class="p">,</span>    <span class="c1"># Max specific growth rate, heterotrophs [1/d]</span>
     <span class="s1">&#39;K_S&#39;</span><span class="p">:</span>           <span class="mf">20.0</span><span class="p">,</span>   <span class="c1"># Half-saturation, substrate [g COD/m3]</span>
     <span class="s1">&#39;K_OH&#39;</span><span class="p">:</span>          <span class="mf">0.2</span><span class="p">,</span>    <span class="c1"># Half-saturation, O2 (heterotrophs) [g O2/m3]</span>
@@ -463,7 +463,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MINERAL_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MINERAL_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;k_min&#39;</span><span class="p">:</span>           <span class="mf">0.05</span><span class="p">,</span>   <span class="c1"># Mineralization rate constant [1/d per kg/m3 mineral]</span>
     <span class="s1">&#39;KH_CO2&#39;</span><span class="p">:</span>          <span class="mf">3.4e-2</span><span class="p">,</span> <span class="c1"># Henry constant CO2 [mol/L/atm] at 20C</span>
     <span class="s1">&#39;pCO2_atm&#39;</span><span class="p">:</span>        <span class="mf">420e-6</span><span class="p">,</span> <span class="c1"># Atmospheric pCO2 [atm]</span>
@@ -486,7 +486,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REACTOR_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">REACTOR_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;HRT&#39;</span><span class="p">:</span>     <span class="mf">0.5</span><span class="p">,</span>    <span class="c1"># Hydraulic retention time [d] = 12 hours</span>
     <span class="s1">&#39;SRT&#39;</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>   <span class="c1"># Sludge retention time [d]</span>
     <span class="s1">&#39;Q_O2&#39;</span><span class="p">:</span>    <span class="mf">200.0</span><span class="p">,</span>  <span class="c1"># Aeration rate [g O2/m3/d]</span>
@@ -505,7 +505,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">monod</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">monod</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -513,7 +513,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">switching</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">switching</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -521,7 +521,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">co2_eq_g_m3</span><span class="p">(</span><span class="n">mineral_params</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">co2_eq_g_m3</span><span class="p">(</span><span class="n">mineral_params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Equilibrium dissolved CO2 with atmosphere [g CO2/m3]&quot;&quot;&quot;</span>
     <span class="n">CO2_eq_mol_L</span> <span class="o">=</span> <span class="n">mineral_params</span><span class="p">[</span><span class="s1">&#39;KH_CO2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">mineral_params</span><span class="p">[</span><span class="s1">&#39;pCO2_atm&#39;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">CO2_eq_mol_L</span> <span class="o">*</span> <span class="n">mineral_params</span><span class="p">[</span><span class="s1">&#39;MW_CO2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1000.0</span>
@@ -531,7 +531,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">co2_mineralization_rate</span><span class="p">(</span><span class="n">S_CO2</span><span class="p">,</span> <span class="n">mineral_loading</span><span class="p">,</span> <span class="n">mp</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">co2_mineralization_rate</span><span class="p">(</span><span class="n">S_CO2</span><span class="p">,</span> <span class="n">mineral_loading</span><span class="p">,</span> <span class="n">mp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Rate of CO2 sequestration by mineral dissolution [g CO2/m3/d]&quot;&quot;&quot;</span>
     <span class="n">CO2_eq</span> <span class="o">=</span> <span class="n">co2_eq_g_m3</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
     <span class="n">excess</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">S_CO2</span> <span class="o">-</span> <span class="n">CO2_eq</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -590,7 +590,7 @@
 <p>The coupling appears in the last two equations: biogenic CO₂ drives mineral dissolution, which adds alkalinity (permanent CO₂ storage) and depletes dissolved CO₂.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">asm1_rates</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">asm1_rates</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate ASM1 process rates. Returns (rho1, rho2, rho3, rho4, rho5).&quot;&quot;&quot;</span>
     <span class="n">S_S</span><span class="p">,</span> <span class="n">S_O</span><span class="p">,</span> <span class="n">S_NH</span><span class="p">,</span> <span class="n">S_NO</span><span class="p">,</span> <span class="n">X_BH</span><span class="p">,</span> <span class="n">X_BA</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[:</span><span class="mi">6</span><span class="p">]]</span>
 
@@ -610,7 +610,7 @@
 <h2>6. Simulation Function<a class="headerlink" href="#simulation-function" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coupled_odes</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">mp</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coupled_odes</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">mp</span><span class="p">):</span>
     <span class="n">S_S</span><span class="p">,</span> <span class="n">S_O</span><span class="p">,</span> <span class="n">S_NH</span><span class="p">,</span> <span class="n">S_NO</span><span class="p">,</span> <span class="n">X_BH</span><span class="p">,</span> <span class="n">X_BA</span><span class="p">,</span> <span class="n">S_ALK</span><span class="p">,</span> <span class="n">S_CO2</span> <span class="o">=</span> <span class="n">y</span>
 
     <span class="n">inv_HRT</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">rp</span><span class="p">[</span><span class="s1">&#39;HRT&#39;</span><span class="p">]</span>
@@ -662,7 +662,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">run_simulation</span></code> integrates the ODE system to steady state using LSODA. Default: 30 days, 3000 time points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">reactor_params</span><span class="p">,</span> <span class="n">asm_params</span><span class="p">,</span> <span class="n">mineral_params</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">reactor_params</span><span class="p">,</span> <span class="n">asm_params</span><span class="p">,</span> <span class="n">mineral_params</span><span class="p">,</span>
                    <span class="n">y0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run coupled wastewater + carbon sequestration simulation to steady state.&quot;&quot;&quot;</span>
     <span class="n">rp</span> <span class="o">=</span> <span class="n">reactor_params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -697,7 +697,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">run_simulation</span><span class="p">(</span><span class="n">REACTOR_PARAMS</span><span class="p">,</span> <span class="n">ASM1_PARAMS</span><span class="p">,</span> <span class="n">MINERAL_PARAMS</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">run_simulation</span><span class="p">(</span><span class="n">REACTOR_PARAMS</span><span class="p">,</span> <span class="n">ASM1_PARAMS</span><span class="p">,</span> <span class="n">MINERAL_PARAMS</span><span class="p">)</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span>
 <span class="n">S_S</span><span class="p">,</span> <span class="n">S_O</span><span class="p">,</span> <span class="n">S_NH</span><span class="p">,</span> <span class="n">S_NO</span><span class="p">,</span> <span class="n">X_BH</span><span class="p">,</span> <span class="n">X_BA</span><span class="p">,</span> <span class="n">S_ALK</span><span class="p">,</span> <span class="n">S_CO2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
 
@@ -721,13 +721,25 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Steady-state results (day 30):
+  COD removal:         91.6%
+  NH4+ removal:        26.4%
+  NO3- produced:       0.0 g N/m3
+  Dissolved O2:        39.52 g/m3
+  Alkalinity gain:     0.168 mol HCO3/m3
+  Dissolved CO2:       15.45 g/m3  (atm eq: 0.63)
+  CO2 sequestration:   6.7% of biogenic CO2 mineralized
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="interactive-treatment-performance-dashboard-plotly">
 <h2>8. Interactive Treatment Performance Dashboard (Plotly)<a class="headerlink" href="#interactive-treatment-performance-dashboard-plotly" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
@@ -770,17 +782,32 @@
 <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;ASM1 + Carbon Mineralization — Treatment Performance&#39;</span><span class="p">,</span>
     <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x unified&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig1.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig1.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/crew_fig1.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="carbon-sequestration-analysis-plotly">
 <h2>9. Carbon Sequestration Analysis (Plotly)<a class="headerlink" href="#carbon-sequestration-analysis-plotly" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CO2_stripping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">S_CO2</span> <span class="o">-</span> <span class="n">CO2_eq_val</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">5.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CO2_stripping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">S_CO2</span> <span class="o">-</span> <span class="n">CO2_eq_val</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">5.0</span>
 
 <span class="n">fig2</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">subplot_titles</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CO2 Fate Over Time&quot;</span><span class="p">,</span> <span class="s2">&quot;Sequestration Efficiency (%)&quot;</span><span class="p">],</span>
@@ -804,10 +831,25 @@
 <span class="n">fig2</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
 <span class="n">fig2</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">430</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Carbon Sequestration Analysis&#39;</span><span class="p">,</span>
     <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x unified&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.15</span><span class="p">))</span>
-<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig2</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig2.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig2.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/crew_fig2.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="sensitivity-to-mineral-loading-plotly">
@@ -816,7 +858,7 @@
 Try adjusting <code class="docutils literal notranslate"><span class="pre">mineral_loadings</span></code> range to explore.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mineral_loadings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mineral_loadings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">seq_effs_s</span><span class="p">,</span> <span class="n">alk_gains_s</span><span class="p">,</span> <span class="n">cod_removals_s</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">ml</span> <span class="ow">in</span> <span class="n">mineral_loadings</span><span class="p">:</span>
@@ -849,10 +891,25 @@ Try adjusting <code class="docutils literal notranslate"><span class="pre">miner
 
 <span class="n">fig3</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Sensitivity to Mineral Loading&#39;</span><span class="p">,</span>
     <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x unified&#39;</span><span class="p">)</span>
-<span class="n">fig3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig3.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig3.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/crew_fig3.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="sensitivity-to-hrt-and-srt-plotly">
@@ -861,7 +918,7 @@ Try adjusting <code class="docutils literal notranslate"><span class="pre">miner
 SRT controls nitrifier retention (longer SRT enables better NH₄⁺ removal).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HRTs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HRTs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">SRTs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 <span class="n">colors_srt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span><span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span><span class="s1">&#39;#2ca02c&#39;</span><span class="p">]</span>
 
@@ -895,10 +952,25 @@ SRT controls nitrifier retention (longer SRT enables better NH₄⁺ removal).</
 
 <span class="n">fig4</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Sensitivity to HRT and SRT&#39;</span><span class="p">,</span>
     <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x unified&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.15</span><span class="p">))</span>
-<span class="n">fig4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig4.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/crew_fig4.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/crew_fig4.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 </section>

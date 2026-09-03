@@ -405,7 +405,7 @@ to stable bicarbonate ions to achieve permanent ocean carbon sequestration.</p>
 <h2>1. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">brentq</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -417,8 +417,8 @@ to stable bicarbonate ions to achieve permanent ocean carbon sequestration.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
-<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;notebook&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;browser&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -433,7 +433,7 @@ For quantitative agreement with the paper, replace with <code class="docutils li
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_carbonate_system</span><span class="p">(</span><span class="n">Alk_mol_m3</span><span class="p">,</span> <span class="n">DIC_mol_m3</span><span class="p">,</span> <span class="n">T_K</span><span class="o">=</span><span class="mf">298.15</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mf">35.0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_carbonate_system</span><span class="p">(</span><span class="n">Alk_mol_m3</span><span class="p">,</span> <span class="n">DIC_mol_m3</span><span class="p">,</span> <span class="n">T_K</span><span class="o">=</span><span class="mf">298.15</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mf">35.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simplified carbonate system calculation.</span>
 <span class="sd">    Returns pH, Omega_calcite, pCO2 (atm), [CO2] (mol/m3).</span>
@@ -529,7 +529,7 @@ For quantitative agreement with the paper, replace with <code class="docutils li
 <p>Grain surface area (Eq. 4): SA = 6 / (ρ_calcite × diameter) × wt_calcite</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calcite_dissolution_rate</span><span class="p">(</span><span class="n">Omega</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calcite_dissolution_rate</span><span class="p">(</span><span class="n">Omega</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Two-segment calcite dissolution rate law (Naviaux et al. 2019).</span>
 <span class="sd">    </span>
@@ -552,7 +552,7 @@ For quantitative agreement with the paper, replace with <code class="docutils li
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">surface_area_geom</span><span class="p">(</span><span class="n">wt_calcite_kg</span><span class="p">,</span> <span class="n">diameter_m</span><span class="p">,</span> <span class="n">rho_calcite</span><span class="o">=</span><span class="mf">2710.0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">surface_area_geom</span><span class="p">(</span><span class="n">wt_calcite_kg</span><span class="p">,</span> <span class="n">diameter_m</span><span class="p">,</span> <span class="n">rho_calcite</span><span class="o">=</span><span class="mf">2710.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Geometric surface area of calcite grains (Eq. 4).</span>
 <span class="sd">    </span>
@@ -573,7 +573,7 @@ For quantitative agreement with the paper, replace with <code class="docutils li
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dissolution_flux</span><span class="p">(</span><span class="n">Omega</span><span class="p">,</span> <span class="n">SA_m2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dissolution_flux</span><span class="p">(</span><span class="n">Omega</span><span class="p">,</span> <span class="n">SA_m2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Total dissolution flux in mol/s.</span>
 <span class="sd">    </span>
@@ -598,7 +598,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 <p><strong>Flow modes:</strong> <code class="docutils literal notranslate"><span class="pre">parallel</span></code> (co-current) or <code class="docutils literal notranslate"><span class="pre">counter</span></code> (counterflow — higher efficiency)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reactor_odes</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reactor_odes</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ODE system for the 4-unit PCST reactor.</span>
 <span class="sd">    </span>
@@ -719,7 +719,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_reactor_simulation</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">7200.0</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_reactor_simulation</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">7200.0</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Run the AWL reactor box model to steady state.</span>
 <span class="sd">    </span>
@@ -790,7 +790,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_steady_state</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_steady_state</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract steady-state values (last time point).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;Alk&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Alk&#39;</span><span class="p">][:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
@@ -806,7 +806,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_efficiencies</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_efficiencies</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute instantaneous total efficiency (Eq. 1) and</span>
 <span class="sd">    conversion efficiency (Eq. 2).</span>
@@ -857,7 +857,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lab_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">flow_rate_ml_min</span><span class="o">=</span><span class="mf">84.0</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lab_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">flow_rate_ml_min</span><span class="o">=</span><span class="mf">84.0</span><span class="p">,</span>
                      <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;parallel&#39;</span><span class="p">,</span> <span class="n">diameter_m</span><span class="o">=</span><span class="mf">187.5e-6</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Laboratory-scale reactor parameters matching Dong et al. 2025.</span>
@@ -910,7 +910,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ship_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">diameter_m</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;counter&#39;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ship_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">diameter_m</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;counter&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Ship-scale reactor parameters matching Dong et al. 2025.</span>
 <span class="sd">    10,000-TEU container vessel at 15 knots.</span>
@@ -960,7 +960,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 <h2>7. Sensitivity Analysis Function<a class="headerlink" href="#sensitivity-analysis-function" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sensitivity_solid_holdup</span><span class="p">(</span><span class="n">holdups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;parallel&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sensitivity_solid_holdup</span><span class="p">(</span><span class="n">holdups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;parallel&#39;</span><span class="p">,</span>
                               <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;lab&#39;</span><span class="p">,</span> <span class="n">diameter_m</span><span class="o">=</span><span class="mf">187.5e-6</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Run sensitivity analysis over a range of solid holdups.</span>
@@ -1012,7 +1012,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 <h2>8. Static Plotting Functions (Matplotlib)<a class="headerlink" href="#static-plotting-functions-matplotlib" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_time_evolution</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AWL Reactor Time Evolution&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_time_evolution</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AWL Reactor Time Evolution&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot Alk, pH, and pCO2 vs time for all 4 DTs.&quot;&quot;&quot;</span>
     <span class="n">rho_sw</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_sw&#39;</span><span class="p">]</span>
     <span class="n">t_min</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">60.0</span>
@@ -1054,7 +1054,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sensitivity</span><span class="p">(</span><span class="n">sens_results</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sensitivity to Solid Holdup&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sensitivity</span><span class="p">(</span><span class="n">sens_results</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sensitivity to Solid Holdup&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot efficiency and chemistry vs solid holdup.&quot;&quot;&quot;</span>
     <span class="n">sh_pct</span> <span class="o">=</span> <span class="n">sens_results</span><span class="p">[</span><span class="s1">&#39;holdup&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.0</span>
     
@@ -1102,7 +1102,7 @@ State variables per dissolution tank (DT): Alkalinity, DIC, Ca²⁺ (all mol/m³
 Paper reports ~40% total efficiency under these conditions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run lab-scale parallel flow simulation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run lab-scale parallel flow simulation</span>
 <span class="n">params_lab</span> <span class="o">=</span> <span class="n">lab_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">flow_rate_ml_min</span><span class="o">=</span><span class="mf">84.0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;parallel&#39;</span><span class="p">)</span>
 <span class="n">results_lab</span> <span class="o">=</span> <span class="n">run_reactor_simulation</span><span class="p">(</span><span class="n">params_lab</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">7200.0</span><span class="p">)</span>
 <span class="n">ss_lab</span> <span class="o">=</span> <span class="n">get_steady_state</span><span class="p">(</span><span class="n">results_lab</span><span class="p">)</span>
@@ -1121,6 +1121,16 @@ Paper reports ~40% total efficiency under these conditions.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lab-scale | Parallel flow | 84 mL/min | 5% solid holdup
+  Added alkalinity:    5960 µmol/kg
+  Outflow pH:          4.94
+  Outflow pCO2:        1.00%
+  Total efficiency:    79.9%  (paper: ~40%)
+  Conversion eff.:     73.6%
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="lab-scale-reactor-counterflow">
@@ -1129,7 +1139,7 @@ Paper reports ~40% total efficiency under these conditions.</p>
 Paper reports ~74% total efficiency, finding that counterflow is substantially more efficient.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run lab-scale counterflow simulation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run lab-scale counterflow simulation</span>
 <span class="n">params_cf</span> <span class="o">=</span> <span class="n">lab_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">flow_rate_ml_min</span><span class="o">=</span><span class="mf">104.0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;counter&#39;</span><span class="p">)</span>
 <span class="n">results_cf</span> <span class="o">=</span> <span class="n">run_reactor_simulation</span><span class="p">(</span><span class="n">params_cf</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">7200.0</span><span class="p">)</span>
 <span class="n">ss_cf</span> <span class="o">=</span> <span class="n">get_steady_state</span><span class="p">(</span><span class="n">results_cf</span><span class="p">)</span>
@@ -1143,6 +1153,14 @@ Paper reports ~74% total efficiency, finding that counterflow is substantially m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lab-scale | Counterflow | 104 mL/min | 5% solid holdup
+  Added alkalinity:    4864 µmol/kg
+  Outflow pH:          4.50
+  Total efficiency:    51.8%  (paper: ~74%)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="ship-scale-reactor-counterflow">
@@ -1151,7 +1169,7 @@ Paper reports ~74% total efficiency, finding that counterflow is substantially m
 Paper reports ~56% total efficiency at this design point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run ship-scale simulation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run ship-scale simulation</span>
 <span class="n">params_ship</span> <span class="o">=</span> <span class="n">ship_scale_params</span><span class="p">(</span><span class="n">solid_holdup</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">diameter_m</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;counter&#39;</span><span class="p">)</span>
 <span class="n">results_ship</span> <span class="o">=</span> <span class="n">run_reactor_simulation</span><span class="p">(</span><span class="n">params_ship</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">200.0</span><span class="p">)</span>
 <span class="n">ss_ship</span> <span class="o">=</span> <span class="n">get_steady_state</span><span class="p">(</span><span class="n">results_ship</span><span class="p">)</span>
@@ -1168,6 +1186,14 @@ Paper reports ~56% total efficiency at this design point.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ship-scale | Counterflow | 30% solid holdup | 100 µm grains
+  Added alkalinity:    1558 µmol/kg
+  Outflow pH:          4.06  (paper: 6.1–6.4)
+  Total efficiency:    29.0%  (paper: ~56%)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="interactive-plots-time-evolution-plotly">
@@ -1176,7 +1202,7 @@ Paper reports ~56% total efficiency at this design point.</p>
 Hover to see exact values, zoom with scroll, click legend to toggle series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -1210,28 +1236,73 @@ Hover to see exact values, zoom with scroll, click legend to toggle series.</p>
 <span class="c1"># Plot lab-scale parallel and counterflow side by side</span>
 <span class="n">fig_lab</span> <span class="o">=</span> <span class="n">plotly_time_evolution</span><span class="p">(</span><span class="n">results_lab</span><span class="p">,</span> <span class="n">params_lab</span><span class="p">,</span>
     <span class="s2">&quot;Lab-scale | Parallel Flow | 84 mL/min | 5% Solid Holdup&quot;</span><span class="p">)</span>
-<span class="n">fig_lab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig_lab</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig1.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig1.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/awl_fig1.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig_cf</span> <span class="o">=</span> <span class="n">plotly_time_evolution</span><span class="p">(</span><span class="n">results_cf</span><span class="p">,</span> <span class="n">params_cf</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_cf</span> <span class="o">=</span> <span class="n">plotly_time_evolution</span><span class="p">(</span><span class="n">results_cf</span><span class="p">,</span> <span class="n">params_cf</span><span class="p">,</span>
     <span class="s2">&quot;Lab-scale | Counterflow | 104 mL/min | 5% Solid Holdup&quot;</span><span class="p">)</span>
-<span class="n">fig_cf</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig_cf</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig2.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig2.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/awl_fig2.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig_ship</span> <span class="o">=</span> <span class="n">plotly_time_evolution</span><span class="p">(</span><span class="n">results_ship</span><span class="p">,</span> <span class="n">params_ship</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_ship</span> <span class="o">=</span> <span class="n">plotly_time_evolution</span><span class="p">(</span><span class="n">results_ship</span><span class="p">,</span> <span class="n">params_ship</span><span class="p">,</span>
     <span class="s2">&quot;Ship-scale | Counterflow | 30% Solid Holdup | 100 µm Grains&quot;</span><span class="p">)</span>
-<span class="n">fig_ship</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig_ship</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig3.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig3.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/awl_fig3.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="interactive-sensitivity-analysis-solid-holdup-plotly">
@@ -1240,7 +1311,7 @@ Hover to see exact values, zoom with scroll, click legend to toggle series.</p>
 Higher solid holdup = more surface area = faster dissolution = more alkalinity added.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">holdups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">sens</span> <span class="o">=</span> <span class="n">sensitivity_solid_holdup</span><span class="p">(</span><span class="n">holdups</span><span class="o">=</span><span class="n">holdups</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;parallel&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;lab&#39;</span><span class="p">)</span>
@@ -1287,10 +1358,25 @@ Higher solid holdup = more surface area = faster dissolution = more alkalinity a
 <span class="n">fig_sens</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sensitivity to Solid Holdup — Lab Scale, Parallel Flow&quot;</span><span class="p">,</span>
     <span class="n">hovermode</span><span class="o">=</span><span class="s2">&quot;x unified&quot;</span><span class="p">)</span>
-<span class="n">fig_sens</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig_sens</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig4.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig4.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/awl_fig4.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="parallel-vs-counterflow-comparison-plotly">
@@ -1298,7 +1384,7 @@ Higher solid holdup = more surface area = faster dissolution = more alkalinity a
 <p>Direct comparison of added alkalinity across solid holdups for parallel vs. counterflow configurations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run sensitivity for counterflow too</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run sensitivity for counterflow too</span>
 <span class="n">sens_cf</span> <span class="o">=</span> <span class="n">sensitivity_solid_holdup</span><span class="p">(</span><span class="n">holdups</span><span class="o">=</span><span class="n">holdups</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;counter&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;lab&#39;</span><span class="p">)</span>
 
 <span class="n">fig_compare</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
@@ -1314,12 +1400,42 @@ Higher solid holdup = more surface area = faster dissolution = more alkalinity a
     <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Solid holdup (%)&quot;</span><span class="p">,</span>
     <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Added alkalinity (µmol/kg)&quot;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span> <span class="n">hovermode</span><span class="o">=</span><span class="s2">&quot;x unified&quot;</span><span class="p">)</span>
-<span class="n">fig_compare</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="n">_os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;plotly_figs&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig_compare</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig5.html&#39;</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span> <span class="k">as</span> <span class="n">_IFrame</span><span class="p">,</span> <span class="n">display</span> <span class="k">as</span> <span class="n">_display</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">_IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;plotly_figs/awl_fig5.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">520</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Counterflow advantage at each solid holdup:&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sh</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">holdups</span><span class="p">):</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">sens_cf</span><span class="p">[</span><span class="s1">&#39;added_Alk_umol_kg&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sens</span><span class="p">[</span><span class="s1">&#39;added_Alk_umol_kg&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">sh</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% holdup: +</span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> µmol/kg advantage for counterflow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="520"
+            src="plotly_figs/awl_fig5.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counterflow advantage at each solid holdup:
+  1.0% holdup: +-313 µmol/kg advantage for counterflow
+  1.6% holdup: +-6 µmol/kg advantage for counterflow
+  2.3% holdup: +-10 µmol/kg advantage for counterflow
+  2.9% holdup: +-19 µmol/kg advantage for counterflow
+  3.5% holdup: +-36 µmol/kg advantage for counterflow
+  4.2% holdup: +-78 µmol/kg advantage for counterflow
+  4.8% holdup: +-164 µmol/kg advantage for counterflow
+  5.5% holdup: +-281 µmol/kg advantage for counterflow
+  6.1% holdup: +-392 µmol/kg advantage for counterflow
+  6.7% holdup: +-474 µmol/kg advantage for counterflow
+  7.4% holdup: +-521 µmol/kg advantage for counterflow
+  8.0% holdup: +-534 µmol/kg advantage for counterflow
 </pre></div>
 </div>
 </div>

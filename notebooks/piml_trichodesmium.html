@@ -454,7 +454,7 @@ directly into the training loss. The network learns to be fast AND physically co
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;png&#39;</span>
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;browser&#39;</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -914,13 +914,27 @@ Negative growth:
     <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s1">&#39;dot&#39;</span><span class="p">)))</span>
 <span class="n">fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Training and Test Loss: Standard NN vs PIML&#39;</span><span class="p">,</span>
     <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;MSE Loss&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">hovermode</span><span class="o">=</span><span class="s1">&#39;x unified&#39;</span><span class="p">)</span>
-<span class="n">fig1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">_html_dir</span> <span class="o">=</span> <span class="s1">&#39;plotly_figs&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">_html_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_html_dir</span><span class="si">}</span><span class="s1">/fig1.html&#39;</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">_fname</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">_fname</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c69c5b0d734a9bafc0d8a5e16ecf89d963814505494522509f4e6a3498f422db.png" src="../_images/c69c5b0d734a9bafc0d8a5e16ecf89d963814505494522509f4e6a3498f422db.png" />
-</div>
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="500"
+            src="plotly_figs/fig1.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -936,13 +950,27 @@ Negative growth:
     <span class="n">fig2</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;True mu (1/day)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
     <span class="n">fig2</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;Predicted mu (1/day)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
 <span class="n">fig2</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Prediction Accuracy: Growth Rate&#39;</span><span class="p">)</span>
-<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">_html_dir</span> <span class="o">=</span> <span class="s1">&#39;plotly_figs&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">_html_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_html_dir</span><span class="si">}</span><span class="s1">/fig2.html&#39;</span>
+<span class="n">fig2</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">_fname</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">_fname</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/68d231fc84b3d4e676535215e34b0abdfe2e3ac3c71f822fb987ffbe7589279f.png" src="../_images/68d231fc84b3d4e676535215e34b0abdfe2e3ac3c71f822fb987ffbe7589279f.png" />
-</div>
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="500"
+            src="plotly_figs/fig2.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,13 +987,27 @@ Negative growth:
                        <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">])</span>
 <span class="n">fig3</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Proteome Budget Constraint: sum must be &lt;= 0.5 (red dashed line)&#39;</span><span class="p">)</span>
-<span class="n">fig3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">_html_dir</span> <span class="o">=</span> <span class="s1">&#39;plotly_figs&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">_html_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_html_dir</span><span class="si">}</span><span class="s1">/fig3.html&#39;</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">_fname</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">_fname</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/874438c3d2ba3fc3bc6248146e49e08077a08df563f2f3f280a93373d31a0f58.png" src="../_images/874438c3d2ba3fc3bc6248146e49e08077a08df563f2f3f280a93373d31a0f58.png" />
-</div>
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="500"
+            src="plotly_figs/fig3.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="real-time-surrogate-prediction">
@@ -1020,8 +1062,8 @@ Negative growth:
   Warm, moderate DOP              0.131    0.146    0.165    0.091
   Hot, low DOP                    0.135    0.129    0.168    0.089
 
-Prediction time: 0.077 ms  (vs ~5 min for full optimization)
-Speedup: ~3904573x
+Prediction time: 0.062 ms  (vs ~5 min for full optimization)
+Speedup: ~4828973x
 </pre></div>
 </div>
 </div>
@@ -1052,13 +1094,27 @@ Speedup: ~3904573x
     <span class="n">fig4</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s1">&#39;DOP (uM)&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
 <span class="n">fig4</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">440</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;PIML Surrogate: Colonial Trichodesmium Response Surface&#39;</span><span class="p">)</span>
-<span class="n">fig4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">_html_dir</span> <span class="o">=</span> <span class="s1">&#39;plotly_figs&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">_html_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_html_dir</span><span class="si">}</span><span class="s1">/fig4.html&#39;</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">_fname</span><span class="p">,</span> <span class="n">include_plotlyjs</span><span class="o">=</span><span class="s1">&#39;cdn&#39;</span><span class="p">,</span> <span class="n">full_html</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">_fname</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11587ca0e3aecd70b83c3d484e1cc2603491a75a9722aa6864d703b8052507fc.png" src="../_images/11587ca0e3aecd70b83c3d484e1cc2603491a75a9722aa6864d703b8052507fc.png" />
-</div>
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="500"
+            src="plotly_figs/fig4.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 </section>
 <section id="summary-and-relevance-to-environmental-data-platforms">

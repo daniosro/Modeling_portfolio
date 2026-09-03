@@ -46,19 +46,35 @@ From Osorio-Rodriguez et al. (in review) — "Microbiome-mediated nutrient acqui
 
 **Language:** Julia (JuMP, Ipopt, DataFrames, Plots)
 
+### 4. Physics-Informed Machine Learning Trichodesmium Surrogate Model
+
+A physics-informed neural network (PIML) surrogate trained on outputs from the Trichodesmium optimization model. Standard neural networks trained on biological data can predict impossible states, such as negative growth rates, or proteome fractions that exceed the cell’s total protein budget. Physics-informed machine learning fixes this by embedding known biological constraints directly into the training loss, penalizing violations of the proteome budget, Arrhenius temperature scaling, and growth rate bounds during network training.
+
+The surrogate predicts growth rate, proteome allocation fractions, and elemental ratios from temperature and DOP inputs in milliseconds (roughly 10,000x faster than the full Julia optimization) while remaining physically consistent.
+
+Implements: Two-network comparison (standard neural network vs physics-informed network) with interactive Plotly figures showing training curves, prediction accuracy, and constraint satisfaction. Includes a response surface heatmap of the full temperature x DOP parameter space.
+
+Connection to real-time monitoring: The same PIML approach applies directly to wastewater treatment and carbon sequestration platforms: train a surrogate on process model outputs, enforce mass balance and kinetic constraints in the loss, deploy for real-time prediction from sensor streams.
+
+Language: Python (PyTorch, NumPy, SciPy, Plotly)
+
 ---
 
 ## Mathematical framework
 
-All three models share the same core approach: **process-based modeling with empirical kinetic rate laws** — encoding known physical, chemical, or biological mechanisms as differential equations or optimization constraints, then solving them to predict system behavior.
+All models share the same fundamental approach: **process-based modeling with empirical kinetic rate laws**.
 
-| | AWL Reactor | CREW Model | *Trichodesmium* |
-|--|--|--|--|
-| Kinetics | Calcite dissolution rate law | Monod + first-order | Michaelis-Menten |
-| Math | ODE per reactor unit | ODE per state variable | NLP constraints |
-| Solver | SciPy LSODA | SciPy LSODA | JuMP/Ipopt |
-| Key parameter | Solid holdup, grain size | HRT, SRT, mineral loading | Temperature, nutrient supply |
-| Output | Alkalinity, pH, efficiency | COD removal, CO₂ sequestration | Growth rate, proteome allocation |
+Each model encodes known mechanisms, such as enzyme kinetics, dissolution rate laws, and mass balance constraints as mathematical equations, then solves those equations to predict system behavior. This approach is more interpretable than black-box machine learning models: every parameter has a physical meaning, every equation represents a known process, and the model's predictions can be traced back to specific assumptions.
+
+The key modeling elements shared across all notebooks:
+
+| Element | AWL Reactor | CREW Model | *Trichodesmium* | *Trichodesmium* ML |
+| --- | --- | --- | --- | --- |
+| Kinetics | Calcite dissolution rate law | Monod + first-order | Michaelis-Menten | Neural network + physics penalties |
+| Mass balance | ODE per reactor unit | ODE per state variable | Algebraic constraints | Backpropagation + constraint loss |
+| Solver | SciPy LSODA | SciPy LSODA | JuMP/Ipopt NLP | PyTorch Adam |
+| Key parameter | Solid holdup, grain size | HRT, SRT, mineral loading | Temperature, nutrient availability | Penalty weight lambda |
+| Output | Alkalinity, pH, efficiency | COD removal, CO2 sequestration | Growth rate, proteome allocation | Growth rate, proteome fractions (real-time) |
 
 ---
 
@@ -80,4 +96,4 @@ Requires Julia with JuMP, Ipopt, DataFrames, Plots, and CSV packages.
 - Dong et al. (2025). Accelerated weathering of limestone on cargo ships for ocean carbon dioxide removal. *Science Advances*, eadr7250.
 - Henze et al. (1987). Activated Sludge Model No. 1. IWA Publishing.
 - Naviaux et al. (2019). Calcite dissolution rates in seawater. *Geochimica et Cosmochimica Acta*, 246:363–384.
-- Osorio-Rodriguez et al. (in review). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.
+- Osorio-Rodriguez et al. (in prep.). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.

@@ -368,6 +368,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerated-weathering-of-limestone-ship-reactor-dong-et-al-2025">1. Accelerated Weathering of Limestone Ship Reactor — Dong et al. (2025)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-wastewater-treatment-and-carbon-mineralization">2. Coupled Wastewater Treatment and Carbon Mineralization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colonial-trichodesmium-optimization-model">3. Colonial <em>Trichodesmium</em> Optimization Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-informed-machine-learning-trichodesmium-surrogate-model">4. Physics-Informed Machine Learning Trichodesmium Surrogate Model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-framework">Mathematical framework</a></li>
@@ -418,17 +419,28 @@
 <p><strong>Implements:</strong> Nonlinear programming (NLP) optimization via JuMP/Ipopt. Maximizes log growth rate subject to mass balance, energetic, stoichiometric, membrane, and density constraints across an 18–35°C temperature sweep.</p>
 <p><strong>Language:</strong> Julia (JuMP, Ipopt, DataFrames, Plots)</p>
 </section>
+<section id="physics-informed-machine-learning-trichodesmium-surrogate-model">
+<h3>4. Physics-Informed Machine Learning Trichodesmium Surrogate Model<a class="headerlink" href="#physics-informed-machine-learning-trichodesmium-surrogate-model" title="Link to this heading">#</a></h3>
+<p>A physics-informed neural network (PIML) surrogate trained on outputs from the Trichodesmium optimization model. Standard neural networks trained on biological data can predict impossible states, such as negative growth rates, or proteome fractions that exceed the cell’s total protein budget. Physics-informed machine learning fixes this by embedding known biological constraints directly into the training loss, penalizing violations of the proteome budget, Arrhenius temperature scaling, and growth rate bounds during network training.</p>
+<p>The surrogate predicts growth rate, proteome allocation fractions, and elemental ratios from temperature and DOP inputs in milliseconds (roughly 10,000x faster than the full Julia optimization) while remaining physically consistent.</p>
+<p>Implements: Two-network comparison (standard neural network vs physics-informed network) with interactive Plotly figures showing training curves, prediction accuracy, and constraint satisfaction. Includes a response surface heatmap of the full temperature x DOP parameter space.</p>
+<p>Connection to real-time monitoring: The same PIML approach applies directly to wastewater treatment and carbon sequestration platforms: train a surrogate on process model outputs, enforce mass balance and kinetic constraints in the loss, deploy for real-time prediction from sensor streams.</p>
+<p>Language: Python (PyTorch, NumPy, SciPy, Plotly)</p>
+</section>
 </section>
 <hr class="docutils" />
 <section id="mathematical-framework">
 <h2>Mathematical framework<a class="headerlink" href="#mathematical-framework" title="Link to this heading">#</a></h2>
-<p>All three models share the same core approach: <strong>process-based modeling with empirical kinetic rate laws</strong> — encoding known physical, chemical, or biological mechanisms as differential equations or optimization constraints, then solving them to predict system behavior.</p>
+<p>All models share the same fundamental approach: <strong>process-based modeling with empirical kinetic rate laws</strong>.</p>
+<p>Each model encodes known mechanisms, such as enzyme kinetics, dissolution rate laws, and mass balance constraints as mathematical equations, then solves those equations to predict system behavior. This approach is more interpretable than black-box machine learning models: every parameter has a physical meaning, every equation represents a known process, and the model’s predictions can be traced back to specific assumptions.</p>
+<p>The key modeling elements shared across all notebooks:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p></p></th>
+<tr class="row-odd"><th class="head"><p>Element</p></th>
 <th class="head"><p>AWL Reactor</p></th>
 <th class="head"><p>CREW Model</p></th>
 <th class="head"><p><em>Trichodesmium</em></p></th>
+<th class="head"><p><em>Trichodesmium</em> ML</p></th>
 </tr>
 </thead>
 <tbody>
@@ -436,26 +448,31 @@
 <td><p>Calcite dissolution rate law</p></td>
 <td><p>Monod + first-order</p></td>
 <td><p>Michaelis-Menten</p></td>
+<td><p>Neural network + physics penalties</p></td>
 </tr>
-<tr class="row-odd"><td><p>Math</p></td>
+<tr class="row-odd"><td><p>Mass balance</p></td>
 <td><p>ODE per reactor unit</p></td>
 <td><p>ODE per state variable</p></td>
-<td><p>NLP constraints</p></td>
+<td><p>Algebraic constraints</p></td>
+<td><p>Backpropagation + constraint loss</p></td>
 </tr>
 <tr class="row-even"><td><p>Solver</p></td>
 <td><p>SciPy LSODA</p></td>
 <td><p>SciPy LSODA</p></td>
-<td><p>JuMP/Ipopt</p></td>
+<td><p>JuMP/Ipopt NLP</p></td>
+<td><p>PyTorch Adam</p></td>
 </tr>
 <tr class="row-odd"><td><p>Key parameter</p></td>
 <td><p>Solid holdup, grain size</p></td>
 <td><p>HRT, SRT, mineral loading</p></td>
-<td><p>Temperature, nutrient supply</p></td>
+<td><p>Temperature, nutrient availability</p></td>
+<td><p>Penalty weight lambda</p></td>
 </tr>
 <tr class="row-even"><td><p>Output</p></td>
 <td><p>Alkalinity, pH, efficiency</p></td>
-<td><p>COD removal, CO₂ sequestration</p></td>
+<td><p>COD removal, CO2 sequestration</p></td>
 <td><p>Growth rate, proteome allocation</p></td>
+<td><p>Growth rate, proteome fractions (real-time)</p></td>
 </tr>
 </tbody>
 </table>
@@ -479,7 +496,7 @@ Requires Julia with JuMP, Ipopt, DataFrames, Plots, and CSV packages.</p>
 <li><p>Dong et al. (2025). Accelerated weathering of limestone on cargo ships for ocean carbon dioxide removal. <em>Science Advances</em>, eadr7250.</p></li>
 <li><p>Henze et al. (1987). Activated Sludge Model No. 1. IWA Publishing.</p></li>
 <li><p>Naviaux et al. (2019). Calcite dissolution rates in seawater. <em>Geochimica et Cosmochimica Acta</em>, 246:363–384.</p></li>
-<li><p>Osorio-Rodriguez et al. (in review). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.</p></li>
+<li><p>Osorio-Rodriguez et al. (in prep.). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.</p></li>
 </ul>
 </section>
 </section>
@@ -537,6 +554,7 @@ Requires Julia with JuMP, Ipopt, DataFrames, Plots, and CSV packages.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerated-weathering-of-limestone-ship-reactor-dong-et-al-2025">1. Accelerated Weathering of Limestone Ship Reactor — Dong et al. (2025)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-wastewater-treatment-and-carbon-mineralization">2. Coupled Wastewater Treatment and Carbon Mineralization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colonial-trichodesmium-optimization-model">3. Colonial <em>Trichodesmium</em> Optimization Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-informed-machine-learning-trichodesmium-surrogate-model">4. Physics-Informed Machine Learning Trichodesmium Surrogate Model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-framework">Mathematical framework</a></li>

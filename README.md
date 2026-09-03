@@ -96,4 +96,4 @@ Requires Julia with JuMP, Ipopt, DataFrames, Plots, and CSV packages.
 - Dong et al. (2025). Accelerated weathering of limestone on cargo ships for ocean carbon dioxide removal. *Science Advances*, eadr7250.
 - Henze et al. (1987). Activated Sludge Model No. 1. IWA Publishing.
 - Naviaux et al. (2019). Calcite dissolution rates in seawater. *Geochimica et Cosmochimica Acta*, 246:363–384.
-- Osorio-Rodriguez et al. (in review). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.
+- Osorio-Rodriguez et al. (in prep.). Microbiome-mediated nutrient acquisition and cell morphology jointly shape the niche and warming responses of N₂-fixing cyanobacteria.
